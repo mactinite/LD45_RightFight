@@ -14,8 +14,12 @@ public class ActorController : MonoBehaviour {
     [HideInInspector]
     public CharacterController characterController;
 
+    private IWEaponManager weaponManager;
+
     private bool jump = false;
     private bool jumpDown = false;
+
+    public bool hit = false;
 
     private Vector3 moveDirection = Vector3.zero;
     private void Awake() {
@@ -28,20 +32,33 @@ public class ActorController : MonoBehaviour {
         if (characterController == null) {
             Debug.LogWarning("No Character Controller on game object!");
         }
+
+        weaponManager = GetComponent<IWEaponManager>();
+        if (weaponManager == null) {
+            Debug.LogWarning("No Weapon Manager on game object!");
+        }
     }
 
     // Update is called once per frame
     void Update() {
         Move();
+        HandleWeapons();
     }
 
+    public void HandleWeapons() {
+        hit = input.GetButtonInput(Constants.HIT_BUTTON);
+
+        if (hit) {
+            weaponManager.Attack();
+        }
+    }
     public void Move() {
-        Vector3 moveVector = new Vector3(input.GetAxisInput(PlayerInput.MOVE_X), 0, input.GetAxisInput(PlayerInput.MOVE_Y));
+        Vector3 moveVector = new Vector3(input.GetAxisInput(Constants.MOVE_X), 0, input.GetAxisInput(Constants.MOVE_Y));
 
         moveVector = moveVector.normalized * walkSpeed;
 
-        jumpDown = input.GetButtonInput(PlayerInput.JUMP_BUTTON_DOWN);
-        jump = input.GetButtonInput(PlayerInput.JUMP_BUTTON);
+        jumpDown = input.GetButtonInput(Constants.JUMP_BUTTON_DOWN);
+        jump = input.GetButtonInput(Constants.JUMP_BUTTON);
 
         if (characterController.isGrounded) {
             moveDirection.y = -1;

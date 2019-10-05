@@ -28,15 +28,6 @@ namespace CustomInput {
         [HideInInspector]
         private string moveYAxis;
 
-        public const string PAUSE_BUTTON = "Pause";
-        public const string JUMP_BUTTON = "Jump";
-        public const string JUMP_BUTTON_DOWN = "JumpDown";
-        public const string JUMP_BUTTON_UP = "JumpUp";
-        public const string MOVE_X = "MoveX";
-        public const string MOVE_Y = "MoveY";
-
-        public const string HIT_BUTTON = "HIT";
-
         public string MoveXAxis {
             get {
                 return moveXAxis;
@@ -83,14 +74,14 @@ namespace CustomInput {
         // Use this for initialization
         void Start() {
 
-            buttonCommands.Add(new Command<bool>(JUMP_BUTTON_DOWN, () => { return GetAllKeysDown(JumpKeys); }));
-            buttonCommands.Add(new Command<bool>(JUMP_BUTTON, () => { return GetAllKeys(JumpKeys); }));
-            buttonCommands.Add(new Command<bool>(JUMP_BUTTON_UP, () => { return GetAllKeysUp(JumpKeys); }));
-            buttonCommands.Add(new Command<bool>(PAUSE_BUTTON, () => { return GetAllKeysDown(PauseKeys); }));
-            buttonCommands.Add(new Command<bool>(HIT_BUTTON, () => { return GetAllKeys(HitKeys); }));
+            buttonCommands.Add(new Command<bool>(Constants.JUMP_BUTTON_DOWN, () => { return GetAllKeysDown(JumpKeys); }));
+            buttonCommands.Add(new Command<bool>(Constants.JUMP_BUTTON, () => { return GetAllKeys(JumpKeys); }));
+            buttonCommands.Add(new Command<bool>(Constants.JUMP_BUTTON_UP, () => { return GetAllKeysUp(JumpKeys); }));
+            buttonCommands.Add(new Command<bool>(Constants.PAUSE_BUTTON, () => { return GetAllKeysDown(PauseKeys); }));
+            buttonCommands.Add(new Command<bool>(Constants.HIT_BUTTON, () => { return GetAllKeys(HitKeys); }));
 
-            axisCommands.Add(new Command<float>(MOVE_X, () => { return Input.GetAxisRaw(MoveXAxis); }));
-            axisCommands.Add(new Command<float>(MOVE_Y, () => { return Input.GetAxisRaw(MoveYAxis); }));
+            axisCommands.Add(new Command<float>(Constants.MOVE_X, () => { return Input.GetAxisRaw(MoveXAxis); }));
+            axisCommands.Add(new Command<float>(Constants.MOVE_Y, () => { return Input.GetAxisRaw(MoveYAxis); }));
         }
 
 
