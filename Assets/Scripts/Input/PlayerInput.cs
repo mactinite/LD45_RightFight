@@ -6,6 +6,9 @@ using UnityEngine;
 namespace CustomInput {
     public class PlayerInput : MonoBehaviour, IManagedInput {
 
+
+        public List<Command<bool>> buttonCommands = new List<Command<bool>>();
+        public List<Command<float>> axisCommands = new List<Command<float>>();
         public Command<bool> JumpDown;
         public Command<bool> Jump;
         public Command<bool> JumpUp;
@@ -16,6 +19,7 @@ namespace CustomInput {
 
         public KeyCode[] JumpKeys;
         public KeyCode[] PauseKeys;
+        public KeyCode[] HitKeys;
 
         [SerializeField]
         [HideInInspector]
@@ -30,6 +34,8 @@ namespace CustomInput {
         public const string JUMP_BUTTON_UP = "JumpUp";
         public const string MOVE_X = "MoveX";
         public const string MOVE_Y = "MoveY";
+
+        public const string HIT_BUTTON = "HIT";
 
         public string MoveXAxis {
             get {
@@ -50,47 +56,41 @@ namespace CustomInput {
                 moveYAxis = value;
             }
         }
-
-        // this is super ugly omg
         public float GetAxisInput(string name) {
 
-            switch (name) {
-                case MOVE_X:
-                    return MoveX.State;
-                case MOVE_Y:
-                    return MoveY.State;
-                default:
-                    Debug.Log("Input type not implemented.");
-                    return 0;
+            foreach (Command<float> cmd in axisCommands) {
+                if (cmd.Name == name) {
+                    return cmd.State;
+                }
+            }
 
-            }
+            Debug.Log("Input type not implemented.");
+            return 0;
+
         }
-        // this is super ugly omg
         public bool GetButtonInput(string name) {
-            switch (name) {
-                case JUMP_BUTTON:
-                    return this.Jump.State;
-                case JUMP_BUTTON_DOWN:
-                    return this.JumpDown.State;
-                case JUMP_BUTTON_UP:
-                    return this.JumpUp.State;
-                case PAUSE_BUTTON:
-                    return this.Pause.State;
-                default:
-                    Debug.LogError("Input " + name + " not implemented.");
-                    return false;
+
+            foreach (Command<bool> cmd in buttonCommands) {
+                if (cmd.Name == name) {
+                    return cmd.State;
+                }
             }
+
+            Debug.LogError("Input " + name + " not implemented.");
+            return false;
         }
 
         // Use this for initialization
         void Start() {
-            this.JumpDown = new Command<bool>(JUMP_BUTTON_DOWN, () => { return GetAllKeysDown(JumpKeys); });
-            this.Jump = new Command<bool>(JUMP_BUTTON, () => { return GetAllKeys(JumpKeys); });
-            this.JumpUp = new Command<bool>(JUMP_BUTTON_UP, () => { return GetAllKeysUp(JumpKeys); });
-            this.MoveX = new Command<float>(MOVE_X, () => { return Input.GetAxisRaw(MoveXAxis); });
-            this.MoveY = new Command<float>(MOVE_Y, () => { return Input.GetAxisRaw(MoveYAxis); });
-            this.Pause = new Command<bool>(PAUSE_BUTTON, () => { return GetAllKeysDown(PauseKeys); });
 
+            buttonCommands.Add(new Command<bool>(JUMP_BUTTON_DOWN, () => { return GetAllKeysDown(JumpKeys); }));
+            buttonCommands.Add(new Command<bool>(JUMP_BUTTON, () => { return GetAllKeys(JumpKeys); }));
+            buttonCommands.Add(new Command<bool>(JUMP_BUTTON_UP, () => { return GetAllKeysUp(JumpKeys); }));
+            buttonCommands.Add(new Command<bool>(PAUSE_BUTTON, () => { return GetAllKeysDown(PauseKeys); }));
+            buttonCommands.Add(new Command<bool>(HIT_BUTTON, () => { return GetAllKeys(HitKeys); }));
+
+            axisCommands.Add(new Command<float>(MOVE_X, () => { return Input.GetAxisRaw(MoveXAxis); }));
+            axisCommands.Add(new Command<float>(MOVE_Y, () => { return Input.GetAxisRaw(MoveYAxis); }));
         }
 
 

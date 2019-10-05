@@ -120,18 +120,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!95 &218018100 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 5195044249843323228, guid: b16b200920a971f41bf37cd32471083d,
-    type: 3}
-  m_PrefabInstance: {fileID: 5195044250049732712}
-  m_PrefabAsset: {fileID: 0}
---- !u!212 &218018101 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 5195044249843323229, guid: b16b200920a971f41bf37cd32471083d,
-    type: 3}
-  m_PrefabInstance: {fileID: 5195044250049732712}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -312,46 +300,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 5979201614949885540}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1614004912 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5195044251659248344, guid: b16b200920a971f41bf37cd32471083d,
-    type: 3}
-  m_PrefabInstance: {fileID: 5195044250049732712}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1614004913 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5195044251659248345, guid: b16b200920a971f41bf37cd32471083d,
     type: 3}
   m_PrefabInstance: {fileID: 5195044250049732712}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1614004917 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1614004917, guid: b16b200920a971f41bf37cd32471083d,
-    type: 3}
-  m_PrefabInstance: {fileID: 5195044250049732712}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1614004912}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: acdd619b374d9354ab05efc56299ab01, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1614004918
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1614004912}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0028a4840c5c0994e8b6b72a9990fbed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  anim: {fileID: 218018100}
-  actor: {fileID: 1614004917}
-  sprite: {fileID: 218018101}
-  flip: 0
 --- !u!1 &1868397878
 GameObject:
   m_ObjectHideFlags: 0
@@ -540,11 +494,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 5195044251659248344, guid: b16b200920a971f41bf37cd32471083d,
-        type: 3}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
     - target: {fileID: 5195044251659248345, guid: b16b200920a971f41bf37cd32471083d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -600,32 +549,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1614004914, guid: b16b200920a971f41bf37cd32471083d, type: 3}
-      propertyPath: m_Center.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1614004914, guid: b16b200920a971f41bf37cd32471083d, type: 3}
-      propertyPath: m_Center.z
-      value: 0.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 1614004917, guid: b16b200920a971f41bf37cd32471083d, type: 3}
-      propertyPath: jumpSpeed
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 1614004917, guid: b16b200920a971f41bf37cd32471083d, type: 3}
-      propertyPath: jumpHeight
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1614004917, guid: b16b200920a971f41bf37cd32471083d, type: 3}
-      propertyPath: gravity
-      value: 20
-      objectReference: {fileID: 0}
     - target: {fileID: 1614004917, guid: b16b200920a971f41bf37cd32471083d, type: 3}
       propertyPath: jumpVelocity
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 1631049127249842134, guid: b16b200920a971f41bf37cd32471083d, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b16b200920a971f41bf37cd32471083d, type: 3}
 --- !u!1001 &5979201614949885540
 PrefabInstance:

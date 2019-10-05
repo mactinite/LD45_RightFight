@@ -110,12 +110,12 @@ GameObject:
   m_Component:
   - component: {fileID: 5195044251659248345}
   - component: {fileID: 5195044251659248347}
-  - component: {fileID: 1631049127249842134}
   - component: {fileID: 1614004914}
   - component: {fileID: 1614004917}
+  - component: {fileID: 1614004918}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -149,24 +149,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   JumpKeys: 78000000
   PauseKeys: 1b000000
+  HitKeys: 7a000000
   moveXAxis: Horizontal
   moveYAxis: Vertical
---- !u!54 &1631049127249842134
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5195044251659248344}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 112
-  m_CollisionDetection: 0
 --- !u!143 &1614004914
 CharacterController:
   m_ObjectHideFlags: 0
@@ -184,7 +169,7 @@ CharacterController:
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0.75, z: 0}
+  m_Center: {x: 0, y: 1, z: 0.75}
 --- !u!114 &1614004917
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -199,7 +184,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gravity: 20
   walkSpeed: 3
-  jumpVelocity: 2
+  jumpVelocity: 5
   fallMultiplier: 2.5
   lowJumpMultiplier: 2
   friction: 10
@@ -207,3 +192,19 @@ MonoBehaviour:
   jump: 0
   jumpDown: 0
   moveDirection: {x: 0, y: 0, z: 0}
+--- !u!114 &1614004918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5195044251659248344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0028a4840c5c0994e8b6b72a9990fbed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 5195044249843323228}
+  actor: {fileID: 1614004917}
+  sprite: {fileID: 5195044249843323229}
+  flip: 0
