@@ -11,17 +11,18 @@ public class AnimationController : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
+        bool moving = Mathf.Abs(actor.characterController.velocity.x) > 0.25f || Mathf.Abs(actor.characterController.velocity.z) > 0.25f;
         anim.SetFloat("VerticalSpeed", actor.characterController.velocity.y);
         anim.SetBool("grounded", actor.characterController.isGrounded);
-        anim.SetBool("moving", actor.characterController.velocity.magnitude > 0);
+        anim.SetBool("moving", moving);
 
-        if(actor.characterController.velocity.x > 0) {
+        if (actor.characterController.velocity.x > 0) {
             flip = false;
-        } else if(actor.characterController.velocity.x < 0) {
+        } else if (actor.characterController.velocity.x < 0) {
             flip = true;
         }
 
         sprite.flipX = flip;
-    }   
+    }
 }
 

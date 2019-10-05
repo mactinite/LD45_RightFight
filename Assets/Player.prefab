@@ -197,7 +197,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acdd619b374d9354ab05efc56299ab01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gravity: 20
   walkSpeed: 3
-  jumpSpeed: 2
+  jumpVelocity: 2
+  fallMultiplier: 2.5
+  lowJumpMultiplier: 2
+  friction: 10
   characterController: {fileID: 1614004914}
   jump: 0
+  jumpDown: 0
+  moveDirection: {x: 0, y: 0, z: 0}
