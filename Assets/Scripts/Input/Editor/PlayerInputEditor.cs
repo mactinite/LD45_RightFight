@@ -8,8 +8,6 @@ using CustomInput;
 public class PlayerInputEditor : Editor {
 
     string[] _axes;
-    int _aimXIndex = 0;
-    int _aimYIndex = 0;
     int _moveXIndex = 0;
     int _moveYIndex = 0;
 
