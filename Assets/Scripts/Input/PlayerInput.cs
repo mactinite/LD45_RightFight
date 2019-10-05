@@ -78,7 +78,7 @@ namespace CustomInput {
             buttonCommands.Add(new Command<bool>(Constants.JUMP_BUTTON, () => { return GetAllKeys(JumpKeys); }));
             buttonCommands.Add(new Command<bool>(Constants.JUMP_BUTTON_UP, () => { return GetAllKeysUp(JumpKeys); }));
             buttonCommands.Add(new Command<bool>(Constants.PAUSE_BUTTON, () => { return GetAllKeysDown(PauseKeys); }));
-            buttonCommands.Add(new Command<bool>(Constants.HIT_BUTTON, () => { return GetAllKeys(HitKeys); }));
+            buttonCommands.Add(new Command<bool>(Constants.HIT_BUTTON, () => { return GetAllKeysDown(HitKeys); }));
 
             axisCommands.Add(new Command<float>(Constants.MOVE_X, () => { return Input.GetAxisRaw(MoveXAxis); }));
             axisCommands.Add(new Command<float>(Constants.MOVE_Y, () => { return Input.GetAxisRaw(MoveYAxis); }));

@@ -8,7 +8,7 @@ public class MeleeWeapon : WeaponAsset {
 
     public override WeaponAsset.WeaponUseStates Attack(int comboCount, WeaponManager manager) {
         manager.CheckMeleeHitbox();
-
-        return WeaponAsset.WeaponUseStates.DEPLETED;
+        
+        return WeaponAsset.WeaponUseStates.HIT;
     }
 }

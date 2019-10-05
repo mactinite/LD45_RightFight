@@ -4,6 +4,9 @@ using UnityEngine;
 public class WeaponAsset : ScriptableObject {
     public Sprite sprite;
     public int uses = 20;
+    public bool infiniteUses;
+
+    public Transform handRig;
 
     public enum WeaponUseStates {
         HIT,
@@ -11,9 +14,11 @@ public class WeaponAsset : ScriptableObject {
         DEPLETED,
     }
     public WeaponUseStates Use(int comboCount, WeaponManager manager) {
-        --uses;
-        if (uses < 0) {
-            return WeaponUseStates.DEPLETED;
+        if (!infiniteUses) {
+            --uses;
+            if (uses < 0) {
+                return WeaponUseStates.DEPLETED;
+            }
         }
 
         return Attack(comboCount, manager);

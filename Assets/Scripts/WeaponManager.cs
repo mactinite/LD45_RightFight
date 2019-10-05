@@ -7,10 +7,23 @@ public class WeaponManager : MonoBehaviour, IWEaponManager {
 
     public BoxCollider meleeHitbox;
 
+    public Vector3 handRigPosition = Vector3.zero;
+
+
+    public Transform battlerRig;
+    public Transform currentHandRig;
+
+    public WeaponBehaviour currentWeapon;
+
     public int comboCount = 0;
     public float comboBufferTime = 0.1f;
     private bool combo = false;
     private float comboTimer;
+
+
+    void Start() {
+        Equip();
+    }
     void Update() {
         if (combo) {
             comboTimer += Time.deltaTime;
@@ -26,6 +39,8 @@ public class WeaponManager : MonoBehaviour, IWEaponManager {
         } else {
             result = unequippedWeapon.Use(comboCount, this);
         }
+
+        currentWeapon.Attack(1);
 
         if (result == WeaponAsset.WeaponUseStates.DEPLETED) {
             WeaponDestroyed();
@@ -44,10 +59,28 @@ public class WeaponManager : MonoBehaviour, IWEaponManager {
 
     public void Equip() {
         // initialize newly picked up weapon
+        if (equippedWeapon) {
+            if (currentHandRig) {
+                Destroy(currentHandRig.gameObject);
+            }
+            currentHandRig = Transform.Instantiate(equippedWeapon.handRig, handRigPosition, equippedWeapon.handRig.rotation, battlerRig);
+            currentHandRig.localPosition = handRigPosition;
+            currentHandRig.localRotation = Quaternion.identity;
+            currentWeapon = currentHandRig.GetComponent<WeaponBehaviour>();
+        } else {
+            currentHandRig = Transform.Instantiate(unequippedWeapon.handRig, handRigPosition, unequippedWeapon.handRig.rotation, battlerRig);
+            currentHandRig.localPosition = handRigPosition;
+            currentHandRig.localRotation = Quaternion.identity;
+            currentWeapon = currentHandRig.GetComponent<WeaponBehaviour>();
+        }
     }
 
     private void WeaponDestroyed() {
-
+        if (currentHandRig) {
+            Destroy(currentHandRig.gameObject);
+        }
+        equippedWeapon = null;
+        Equip();
     }
 
     public bool CheckMeleeHitbox() {
