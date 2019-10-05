@@ -10,16 +10,16 @@ public class WeaponAsset : ScriptableObject {
         MISS,
         DEPLETED,
     }
-    public WeaponUseStates Use(int comboCount) {
+    public WeaponUseStates Use(int comboCount, WeaponManager manager) {
         --uses;
         if (uses < 0) {
             return WeaponUseStates.DEPLETED;
         }
 
-        return Attack(comboCount);
+        return Attack(comboCount, manager);
     }
 
-    public virtual WeaponUseStates Attack(int comboCount) {
+    public virtual WeaponUseStates Attack(int comboCount, WeaponManager manager) {
         return WeaponUseStates.DEPLETED;
     }
 }
