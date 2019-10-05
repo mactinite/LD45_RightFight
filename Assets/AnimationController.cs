@@ -6,8 +6,8 @@ public class AnimationController : MonoBehaviour {
 
     public Animator anim;
     public ActorController actor;
-    public SpriteRenderer sprite;
-    public bool flip;
+    public Transform sprite;
+    bool flip;
 
     // Update is called once per frame
     void Update() {
@@ -22,7 +22,12 @@ public class AnimationController : MonoBehaviour {
             flip = true;
         }
 
-        sprite.flipX = flip;
+        if(flip){
+            sprite.localScale = new Vector3(-1, 1, 1);
+        } else {
+            sprite.localScale = Vector3.one;
+        }
+
     }
 }
 
