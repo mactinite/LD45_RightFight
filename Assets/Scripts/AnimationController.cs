@@ -9,6 +9,11 @@ public class AnimationController : MonoBehaviour {
     public Transform sprite;
     bool flip;
 
+    IManagedInput input;
+    private void Start() {
+        input = GetComponent<IManagedInput>();
+    }
+
     // Update is called once per frame
     void Update() {
         bool moving = Mathf.Abs(actor.characterController.velocity.x) > 0.25f || Mathf.Abs(actor.characterController.velocity.z) > 0.25f;
@@ -17,10 +22,11 @@ public class AnimationController : MonoBehaviour {
         anim.SetBool("moving", moving);
 
         anim.SetBool("hit", actor.hit);
+        
 
-        if (actor.characterController.velocity.x > 0) {
+        if (input.GetAxisInput(CustomInput.Constants.MOVE_X) > 0) {
             flip = false;
-        } else if (actor.characterController.velocity.x < 0) {
+        } else if (input.GetAxisInput(CustomInput.Constants.MOVE_X) < 0) {
             flip = true;
         }
 

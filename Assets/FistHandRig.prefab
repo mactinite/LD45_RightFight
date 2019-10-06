@@ -147,7 +147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uses: 20
-  infiniteUses: 0
+  infiniteUses: 1
   weapon: {fileID: 0}
   weaponManager: {fileID: 0}
 --- !u!1 &6841670339607000365

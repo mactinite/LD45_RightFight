@@ -6,6 +6,7 @@ public class WeaponAsset : ScriptableObject {
 
     public Transform handRig;
 
+    public Transform pickupPrefab;
     public enum WeaponType {
         Melee,
         Ranged

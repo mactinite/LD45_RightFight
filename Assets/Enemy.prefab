@@ -156,7 +156,7 @@ MonoBehaviour:
   unequippedWeapon: {fileID: 11400000, guid: 7196f37d05fcc4f93993c18763129a92, type: 2}
   equippedWeapon: {fileID: 0}
   meleeHitbox: {fileID: 396361916613156618}
-  handRigPosition: {fileID: 0}
+  handRigPosition: {fileID: 2013854198896251343}
   battlerRig: {fileID: 9121399773849513230}
   currentHandRig: {fileID: 0}
   currentWeapon: {fileID: 0}
@@ -332,6 +332,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7424837143487381566, guid: 54d0f9332284d1e49a853c52e82f8cb8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8356481075387600262, guid: 54d0f9332284d1e49a853c52e82f8cb8,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7669619479200151182, guid: 54d0f9332284d1e49a853c52e82f8cb8,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1844181187174011481, guid: 54d0f9332284d1e49a853c52e82f8cb8,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 54d0f9332284d1e49a853c52e82f8cb8, type: 3}
 --- !u!4 &9121399773849513230 stripped
@@ -358,3 +378,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d5cda90a608546cda0c79afe688cd29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &2013854198896251343 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8356481074054059877, guid: 54d0f9332284d1e49a853c52e82f8cb8,
+    type: 3}
+  m_PrefabInstance: {fileID: 7496957338170394282}
+  m_PrefabAsset: {fileID: 0}

@@ -65,12 +65,16 @@ PrefabInstance:
     - target: {fileID: 7306841343636295536, guid: 909f61582b371674e99cec7e84abd07d,
         type: 3}
       propertyPath: m_Name
-      value: Battler
+      value: Battler Variant
       objectReference: {fileID: 0}
-    - target: {fileID: 2193970627722673526, guid: 909f61582b371674e99cec7e84abd07d,
+    - target: {fileID: 1209248080, guid: 909f61582b371674e99cec7e84abd07d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5274305087165886625, guid: 909f61582b371674e99cec7e84abd07d,
         type: 3}
-      propertyPath: m_Layer
-      value: 8
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 909f61582b371674e99cec7e84abd07d, type: 3}

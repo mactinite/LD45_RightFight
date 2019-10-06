@@ -74,6 +74,10 @@ public class ActorController : MonoBehaviour {
         hitBack = direction;
         hitBack.y += hitBackSpeed;
         if (health < 0) {
+            WeaponAsset equipped = weaponManager.GetEquippedWeapon();
+            if(equipped){
+                Instantiate(equipped.pickupPrefab, transform.position, equipped.pickupPrefab.rotation);
+            }
             Destroy(this.gameObject);
         }
     }

@@ -135,4 +135,7 @@ public class WeaponManager : MonoBehaviour, IWEaponManager {
         }
     }
 
+    public WeaponAsset GetEquippedWeapon() {
+        return equippedWeapon;
+    }
 }
