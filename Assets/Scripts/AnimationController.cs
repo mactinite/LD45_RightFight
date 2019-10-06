@@ -16,13 +16,15 @@ public class AnimationController : MonoBehaviour {
         anim.SetBool("grounded", actor.characterController.isGrounded);
         anim.SetBool("moving", moving);
 
+        anim.SetBool("hit", actor.hit);
+
         if (actor.characterController.velocity.x > 0) {
             flip = false;
         } else if (actor.characterController.velocity.x < 0) {
             flip = true;
         }
 
-        if(flip){
+        if (flip) {
             sprite.localScale = new Vector3(-1, 1, 1);
         } else {
             sprite.localScale = Vector3.one;

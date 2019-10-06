@@ -4,8 +4,7 @@ using UnityEngine;
 public class WeaponManager : MonoBehaviour, IWEaponManager {
     public WeaponAsset unequippedWeapon;
     public WeaponAsset equippedWeapon;
-
-    public BoxCollider meleeHitbox;
+    public HitboxMonitor meleeHitbox;
 
     public Vector3 handRigPosition = Vector3.zero;
 
@@ -83,17 +82,20 @@ public class WeaponManager : MonoBehaviour, IWEaponManager {
         Equip();
     }
 
-    public bool CheckMeleeHitbox() {
+    public Collider CheckMeleeHitbox() {
         //TODO: write melee hitbox checking code
-        return true;
+        return meleeHitbox.checkStatus();
     }
 
     public void SetMeleeRange(float range) {
-        Vector3 size = meleeHitbox.size;
-        Vector3 center = meleeHitbox.center;
+        Vector3 size = meleeHitbox.GetSize();
+        Vector3 center = meleeHitbox.GetCenter();
 
         size.x = range;
         center.x = range * 0.5f + 0.5f;
+
+        meleeHitbox.SetHitboxSize(size);
+        meleeHitbox.SetHitboxCenter(center);
     }
 
 }

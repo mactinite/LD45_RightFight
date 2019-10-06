@@ -19,7 +19,13 @@ public class ActorController : MonoBehaviour {
     private bool jump = false;
     private bool jumpDown = false;
 
+    [HideInInspector]
+    public bool hitButton = false;
+
+    [HideInInspector]
     public bool hit = false;
+    public float hitBackTime = 0.25f;
+    public float hitBackSpeed = 12.0f;
 
     private Vector3 moveDirection = Vector3.zero;
     private void Awake() {
@@ -46,12 +52,28 @@ public class ActorController : MonoBehaviour {
     }
 
     public void HandleWeapons() {
-        hit = input.GetButtonInput(Constants.HIT_BUTTON);
+        hitButton = input.GetButtonInput(Constants.HIT_BUTTON);
 
-        if (hit) {
+        if (hitButton) {
             weaponManager.Attack();
         }
     }
+
+    public int health = 100;
+    public void SetHitback(Vector3 direction) {
+        Debug.Log("HITBACK " + direction);
+        health -= 5;
+        hit = true;
+        hitbackTimer = 0;
+        hitBack = direction;
+        hitBack.y += hitBackSpeed;
+        if (health < 0) {
+            Destroy(this.gameObject);
+        }
+    }
+
+    public Vector3 hitBack = Vector3.zero;
+    float hitbackTimer = 0;
     public void Move() {
         Vector3 moveVector = new Vector3(input.GetAxisInput(Constants.MOVE_X), 0, input.GetAxisInput(Constants.MOVE_Y));
 
@@ -62,10 +84,11 @@ public class ActorController : MonoBehaviour {
 
         if (characterController.isGrounded) {
             moveDirection.y = -1;
-            if (jumpDown) {
+            if (jumpDown && !hit) {
                 moveDirection.y = jumpVelocity;
             }
         }
+
 
 
         if (characterController.velocity.y <= 0) {
@@ -76,7 +99,19 @@ public class ActorController : MonoBehaviour {
             moveDirection.y -= gravity * Time.deltaTime;
         }
 
-        moveVector.y = moveDirection.y;
+
+
+        if (hit == true && hitbackTimer <= hitBackTime) {
+            hitbackTimer += Time.deltaTime;
+            moveVector = hitBack * hitBackSpeed;
+        }
+
+        if (hitbackTimer > hitBackTime) {
+            hitbackTimer = 0;
+            hit = false;
+        }
+
+        moveVector += moveDirection;
 
         characterController.Move(moveVector * Time.deltaTime);
 
