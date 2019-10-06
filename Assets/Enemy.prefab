@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1519682974464611928}
   - component: {fileID: 5729546469789240742}
   - component: {fileID: 6527281243499513501}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ MonoBehaviour:
   pickup: 0
   hitBackTime: 0.35
   hitBackSpeed: 3
-  health: 100
+  health: 25
   hitBack: {x: 0, y: 0, z: 0}
 --- !u!114 &8379161193352690246
 MonoBehaviour:
@@ -154,7 +154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unequippedWeapon: {fileID: 11400000, guid: 7196f37d05fcc4f93993c18763129a92, type: 2}
-  equippedWeapon: {fileID: 0}
+  equippedWeapon: {fileID: 11400000, guid: f9f9bbb11430597448a44ad7761efc78, type: 2}
   meleeHitbox: {fileID: 396361916613156618}
   handRigPosition: {fileID: 2013854198896251343}
   battlerRig: {fileID: 9121399773849513230}
@@ -332,25 +332,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7424837143487381566, guid: 54d0f9332284d1e49a853c52e82f8cb8,
+    - target: {fileID: 287441955987601098, guid: 54d0f9332284d1e49a853c52e82f8cb8,
         type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8356481075387600262, guid: 54d0f9332284d1e49a853c52e82f8cb8,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7669619479200151182, guid: 54d0f9332284d1e49a853c52e82f8cb8,
-        type: 3}
-      propertyPath: m_RootOrder
+      propertyPath: m_Size.z
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1844181187174011481, guid: 54d0f9332284d1e49a853c52e82f8cb8,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 54d0f9332284d1e49a853c52e82f8cb8, type: 3}

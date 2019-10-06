@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 907161172488380882, guid: ab7437ca7aa73994085a1a48f0e60599,
         type: 3}
       propertyPath: m_Name
-      value: Pickup
+      value: KatanaPickup
       objectReference: {fileID: 0}
     - target: {fileID: 907161172488380880, guid: ab7437ca7aa73994085a1a48f0e60599,
         type: 3}

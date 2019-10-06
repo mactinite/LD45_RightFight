@@ -7,8 +7,13 @@ public class WeaponPickup : MonoBehaviour {
     public WeaponAsset pickup;
     public SpriteRenderer spriteRenderer;
 
+    public GameObject topLevel;
+
     private void Start() {
         spriteRenderer.sprite = pickup.sprite;
+        if(!topLevel){
+            topLevel = gameObject;
+        }
     }
     void OnTriggerStay(Collider collider) {
         if (collider.tag == "Player") {
@@ -24,7 +29,7 @@ public class WeaponPickup : MonoBehaviour {
     }
 
     public void PickUp(){
-        Destroy(this.gameObject);
+        Destroy(topLevel);
     }
 
 }
