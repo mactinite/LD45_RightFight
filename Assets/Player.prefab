@@ -92,8 +92,8 @@ MonoBehaviour:
   characterController: {fileID: 1614004914}
   hitButton: 0
   hit: 0
-  hitBackTime: 0.25
-  hitBackSpeed: 12
+  hitBackTime: 0.1
+  hitBackSpeed: 2
   health: 100
   hitBack: {x: 0, y: 0, z: 0}
 --- !u!114 &1614004918
@@ -131,7 +131,9 @@ MonoBehaviour:
   currentHandRig: {fileID: 0}
   currentWeapon: {fileID: 0}
   comboCount: 0
-  comboBufferTime: 0.1
+  comboBufferTime: 1
+  combo: 0
+  updateUI: 1
 --- !u!65 &5980465482717355704
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -212,10 +214,40 @@ PrefabInstance:
       propertyPath: m_Name
       value: Battler
       objectReference: {fileID: 0}
-    - target: {fileID: 7635898637445582070, guid: 909f61582b371674e99cec7e84abd07d,
+    - target: {fileID: 7306841344019393654, guid: 909f61582b371674e99cec7e84abd07d,
         type: 3}
-      propertyPath: m_IsActive
-      value: 1
+      propertyPath: m_LocalPosition.x
+      value: 0.2138004
+      objectReference: {fileID: 0}
+    - target: {fileID: 7306841344019393654, guid: 909f61582b371674e99cec7e84abd07d,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.849
+      objectReference: {fileID: 0}
+    - target: {fileID: 7306841344019393654, guid: 909f61582b371674e99cec7e84abd07d,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.128
+      objectReference: {fileID: 0}
+    - target: {fileID: 7306841344094622193, guid: 909f61582b371674e99cec7e84abd07d,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.1411991
+      objectReference: {fileID: 0}
+    - target: {fileID: 7306841344094622193, guid: 909f61582b371674e99cec7e84abd07d,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.919
+      objectReference: {fileID: 0}
+    - target: {fileID: 7306841344094622193, guid: 909f61582b371674e99cec7e84abd07d,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.012
+      objectReference: {fileID: 0}
+    - target: {fileID: 7306841344242982441, guid: 909f61582b371674e99cec7e84abd07d,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 909f61582b371674e99cec7e84abd07d, type: 3}

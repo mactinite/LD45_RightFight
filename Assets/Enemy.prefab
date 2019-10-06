@@ -126,7 +126,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   hitButton: 0
-  hitTimeout: 0.5
+  hitTimeout: 2
 --- !u!65 &5729546469789240742
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -161,6 +161,8 @@ MonoBehaviour:
   currentWeapon: {fileID: 0}
   comboCount: 0
   comboBufferTime: 0.1
+  combo: 0
+  updateUI: 0
 --- !u!1 &2183656953123972721
 GameObject:
   m_ObjectHideFlags: 0

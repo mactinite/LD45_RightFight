@@ -23,7 +23,7 @@ public class WeaponManager : MonoBehaviour, IWEaponManager {
     public bool updateUI = false;
 
 
-    void Awake() {
+    void Start() {
         Equip();
         hudController = HUDController._instance as HUDController;
     }
