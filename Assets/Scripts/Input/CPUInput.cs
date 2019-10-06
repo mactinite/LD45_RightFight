@@ -15,8 +15,11 @@ namespace CustomInput {
 
         WeaponManager weaponManager;
 
+        AnimationController animationController;
+
         void Awake() {
             weaponManager = GetComponent<WeaponManager>();
+            animationController = GetComponent<AnimationController>();
         }
 
         // this is super ugly omg
@@ -77,13 +80,20 @@ namespace CustomInput {
                 float dist = Vector3.Distance(target.position, transform.position);
 
                 Collider col = weaponManager.meleeHitbox.checkStatus();
+
+                if(col && col.tag == "Enemy"){
+                    moveDirection = Vector3.Reflect(moveDirection, animationController.flip ? transform.right : -transform.right);
+                }
                 
-                if(col){
+                if(col && col.tag == "Player"){
                     inRange = true;
-                } else {
+                } else{
                     inRange = false;
                 }
+
+
                 if (!hasHit && inRange) {
+                    moveDirection = moveDirection * 0.1f;
                     hasHit = true;
                     hitButton = true;
                 }

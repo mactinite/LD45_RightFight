@@ -7,7 +7,7 @@ public class AnimationController : MonoBehaviour {
     public Animator anim;
     public ActorController actor;
     public Transform sprite;
-    bool flip;
+    public bool flip;
 
     IManagedInput input;
     private void Start() {

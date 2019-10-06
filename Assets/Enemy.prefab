@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 1519682974464611928}
   - component: {fileID: 5729546469789240742}
   - component: {fileID: 6527281243499513501}
+  - component: {fileID: 233387914590987822}
   m_Layer: 10
   m_Name: Enemy
   m_TagString: Untagged
@@ -113,6 +114,7 @@ MonoBehaviour:
   anim: {fileID: 9121399773849513231}
   actor: {fileID: 6220994274246210974}
   sprite: {fileID: 9121399773849513230}
+  flip: 0
 --- !u!114 &1519682974464611928
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -139,8 +141,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 2, z: 1}
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Size: {x: 1, y: 2.1131706, z: 1}
+  m_Center: {x: 0, y: 1.1926239, z: 0}
 --- !u!114 &6527281243499513501
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -165,6 +167,18 @@ MonoBehaviour:
   combo: 0
   updateUI: 0
   pickupWeapon: {fileID: 0}
+--- !u!114 &233387914590987822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2183656951450785267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69cbfc39a9cf2774f847780b4d675c52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2183656953123972721
 GameObject:
   m_ObjectHideFlags: 0
