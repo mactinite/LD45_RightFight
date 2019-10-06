@@ -15,8 +15,8 @@ TagManager:
   - 
   - EnemyHitbox
   - PlayerHitbox
-  - 
-  - 
+  - Enemy
+  - Player
   - 
   - 
   - 

@@ -41,6 +41,9 @@ public class HitboxMonitor : MonoBehaviour {
         if (distance < closestCollider) {
             collidingWith = collider;
             closestCollider = distance;
+        } else if (!collidingWith) {
+            collidingWith = collider;
+            closestCollider = distance;
         }
     }
 
