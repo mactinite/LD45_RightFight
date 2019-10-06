@@ -1171,6 +1171,51 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3960153618659326449, guid: 7c7ed78d8213c744dae350320493d66c,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.52753395
+      objectReference: {fileID: 0}
+    - target: {fileID: 3960153618659326449, guid: 7c7ed78d8213c744dae350320493d66c,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.47085917
+      objectReference: {fileID: 0}
+    - target: {fileID: 3960153618659326449, guid: 7c7ed78d8213c744dae350320493d66c,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.47085893
+      objectReference: {fileID: 0}
+    - target: {fileID: 3960153618659326449, guid: 7c7ed78d8213c744dae350320493d66c,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.5275335
+      objectReference: {fileID: 0}
+    - target: {fileID: 3960153618659326449, guid: 7c7ed78d8213c744dae350320493d66c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 83.50201
+      objectReference: {fileID: 0}
+    - target: {fileID: 3960153618659326449, guid: 7c7ed78d8213c744dae350320493d66c,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 6.38
+      objectReference: {fileID: 0}
+    - target: {fileID: 3960153618659326449, guid: 7c7ed78d8213c744dae350320493d66c,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3960153618659326449, guid: 7c7ed78d8213c744dae350320493d66c,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.82
+      objectReference: {fileID: 0}
+    - target: {fileID: 4790008623458440118, guid: 7c7ed78d8213c744dae350320493d66c,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 6.48
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c7ed78d8213c744dae350320493d66c, type: 3}
 --- !u!1001 &5858130523899398734
