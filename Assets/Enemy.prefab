@@ -359,6 +359,11 @@ PrefabInstance:
       propertyPath: LayerToCheck
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 5112617577073431797, guid: 54d0f9332284d1e49a853c52e82f8cb8,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 972bda9139a416b4aa008bbe3007dc58, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 54d0f9332284d1e49a853c52e82f8cb8, type: 3}
 --- !u!4 &9121399773849513230 stripped
