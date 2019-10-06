@@ -7,9 +7,17 @@ namespace CustomInput {
     public class CPUInput : MonoBehaviour, IManagedInput {
 
         public Command<float> MoveX;
+
         public Command<float> MoveY;
+        public Command<bool> HitButton;
         public const string MOVE_X = "MoveX";
         public const string MOVE_Y = "MoveY";
+
+        WeaponManager weaponManager;
+
+        void Awake() {
+            weaponManager = GetComponent<WeaponManager>();
+        }
 
         // this is super ugly omg
         public float GetAxisInput(string name) {
@@ -28,6 +36,8 @@ namespace CustomInput {
         // this is super ugly omg
         public bool GetButtonInput(string name) {
             switch (name) {
+                case Constants.HIT_BUTTON:
+                    return HitButton.State;
                 default:
                     Debug.LogError("Input " + name + " not implemented.");
                     return false;
@@ -38,13 +48,56 @@ namespace CustomInput {
         void Start() {
             this.MoveX = new Command<float>(MOVE_X, () => moveDirection.x);
             this.MoveY = new Command<float>(MOVE_Y, () => moveDirection.z);
+            this.HitButton = new Command<bool>(Constants.HIT_BUTTON, () => {
+                bool result = hitButton;
+                if(hitButton == true){
+                    hitButton = false;
+                }
+                return result;
+            });
 
         }
         Vector3 moveDirection = Vector3.zero;
 
         public Transform target;
+
+        public bool hitButton = false;
+        private bool hasHit = false;
+        private bool inRange;
+        public float hitTimeout = 0.5f;
+        private float hitTimer = 0.0f;
         private void Update() {
             moveDirection = target.position - transform.position;
+
+            WeaponAsset currentWeapon = (weaponManager.equippedWeapon ? weaponManager.equippedWeapon : weaponManager.unequippedWeapon);
+
+            if (currentWeapon.weaponType == WeaponAsset.WeaponType.Melee) {
+                MeleeWeapon weapon = currentWeapon as MeleeWeapon;
+
+                float dist = Vector3.Distance(target.position, transform.position);
+
+                Collider col = weaponManager.meleeHitbox.checkStatus();
+                
+                if(col){
+                    inRange = true;
+                } else {
+                    inRange = false;
+                }
+                if (!hasHit && inRange) {
+                    hasHit = true;
+                    hitButton = true;
+                }
+
+                if (hasHit) {
+                    hitTimer += Time.deltaTime;
+                }
+
+                if (hitTimer > hitTimeout) {
+                    hitTimer = 0;
+                    hasHit = false;
+                }
+            }
+
         }
 
     }

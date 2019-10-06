@@ -61,7 +61,6 @@ public class ActorController : MonoBehaviour {
 
     public int health = 100;
     public void SetHitback(Vector3 direction) {
-        Debug.Log("HITBACK " + direction);
         health -= 5;
         hit = true;
         hitbackTimer = 0;

@@ -1,20 +1,22 @@
 using UnityEngine;
 
-public class Fists : WeaponBehaviour {
+public class Fists : MeleeWeaponBehaviour {
 
-    Animator anim;
+    private Animator anim;
+    
 
-    private void Awake() {
-        anim = GetComponent<Animator>();
-        if(anim == null){
+    private void Update() {
+        this.anim.SetBool("Combo", weaponManager.combo);
+    }
+    private void Start() {
+        this.anim = transform.GetComponent<Animator>();
+        if(this.anim == null){
             Debug.LogWarning("Weapon doesn't have an animator");
         }
     }
-    public override void Attack(int comboCount) {
-        anim.SetTrigger("Attack");
-    }
+    
+    public override void OnAttack(WeaponManager manager) {
+        this.anim.SetTrigger("Attack");
 
-    public override void Equip() {
-        throw new System.NotImplementedException();
     }
 }

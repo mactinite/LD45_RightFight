@@ -16,11 +16,11 @@ public class WeaponManager : MonoBehaviour, IWEaponManager {
 
     public int comboCount = 0;
     public float comboBufferTime = 0.1f;
-    private bool combo = false;
+    public bool combo = false;
     private float comboTimer;
 
 
-    void Start() {
+    void Awake() {
         Equip();
     }
     void Update() {
@@ -31,32 +31,37 @@ public class WeaponManager : MonoBehaviour, IWEaponManager {
     public void Attack() {
         // keep track of combos
         // trigger weapon attack
-        WeaponAsset.WeaponUseStates result;
+        WeaponBehaviour.WeaponUseStates result;
 
-        if (equippedWeapon) {
-            result = equippedWeapon.Use(comboCount, this);
-        } else {
-            result = unequippedWeapon.Use(comboCount, this);
-        }
+        result = currentWeapon.Use(comboCount, this);
 
-        currentWeapon.Attack(1);
-
-        if (result == WeaponAsset.WeaponUseStates.DEPLETED) {
+        if (result == WeaponBehaviour.WeaponUseStates.DEPLETED) {
             WeaponDestroyed();
         }
 
-        if (result == WeaponAsset.WeaponUseStates.HIT && comboTimer <= comboBufferTime) {
+        if (result == WeaponBehaviour.WeaponUseStates.HIT && comboTimer <= comboBufferTime) {
+            combo = true;
             comboTimer = 0;
             comboCount++;
         }
 
-        if (result == WeaponAsset.WeaponUseStates.MISS) {
+        if (result == WeaponBehaviour.WeaponUseStates.MISS) {
+            combo = false;
             comboTimer = 0;
             comboCount = 0;
         }
     }
 
-    public void Equip() {
+    public void Equip(){
+        Equip(null);
+    }
+
+    public void Equip(WeaponAsset newWeapon) {
+        
+        if(newWeapon != null){
+            equippedWeapon = newWeapon;
+        }
+
         // initialize newly picked up weapon
         if (equippedWeapon) {
             if (currentHandRig) {
@@ -66,11 +71,16 @@ public class WeaponManager : MonoBehaviour, IWEaponManager {
             currentHandRig.localPosition = handRigPosition;
             currentHandRig.localRotation = Quaternion.identity;
             currentWeapon = currentHandRig.GetComponent<WeaponBehaviour>();
+            currentWeapon.Equip(this);
         } else {
+            if (currentHandRig) {
+                Destroy(currentHandRig.gameObject);
+            }
             currentHandRig = Transform.Instantiate(unequippedWeapon.handRig, handRigPosition, unequippedWeapon.handRig.rotation, battlerRig);
             currentHandRig.localPosition = handRigPosition;
             currentHandRig.localRotation = Quaternion.identity;
             currentWeapon = currentHandRig.GetComponent<WeaponBehaviour>();
+            currentWeapon.Equip(this);
         }
     }
 
