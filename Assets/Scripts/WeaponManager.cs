@@ -46,10 +46,22 @@ public class WeaponManager : MonoBehaviour, IWEaponManager {
             hudController.ComboTimer = comboTimer;
             hudController.ComboBufferTime = comboBufferTime;
         }
+
+        attackTimer += Time.deltaTime;
+        if(attackTimer > attackRate){
+            canAttack = true;
+        }
     }
+
+    float attackRate = 0;
+    float attackTimer = 0;
+
+    bool canAttack = true;
     public void Attack() {
-        // keep track of combos
-        // trigger weapon attack
+        if(!canAttack){
+            return;
+        }
+        // handle attackRate
         WeaponBehaviour.WeaponUseStates result;
 
         result = currentWeapon.Use(comboCount, this);
@@ -92,12 +104,14 @@ public class WeaponManager : MonoBehaviour, IWEaponManager {
             currentHandRig = Transform.Instantiate(equippedWeapon.handRig, handRigPosition);
             currentWeapon = currentHandRig.GetComponent<WeaponBehaviour>();
             currentWeapon.Equip(this);
+            attackRate = equippedWeapon.attackRate;
         } else {
             if (currentHandRig) {
                 Destroy(currentHandRig.gameObject);
             }
             currentHandRig = Transform.Instantiate(unequippedWeapon.handRig, handRigPosition);
             currentWeapon = currentHandRig.GetComponent<WeaponBehaviour>();
+            attackRate = unequippedWeapon.attackRate;
             currentWeapon.Equip(this);
         }
     }
@@ -111,7 +125,6 @@ public class WeaponManager : MonoBehaviour, IWEaponManager {
     }
 
     public Collider CheckMeleeHitbox() {
-        //TODO: write melee hitbox checking code
         return meleeHitbox.checkStatus();
     }
 

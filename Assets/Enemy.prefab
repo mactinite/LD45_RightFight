@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 233387914590987822}
   m_Layer: 10
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -179,6 +179,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69cbfc39a9cf2774f847780b4d675c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onDestroy:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &2183656953123972721
 GameObject:
   m_ObjectHideFlags: 0
@@ -350,6 +353,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Size.z
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7893301523812178336, guid: 54d0f9332284d1e49a853c52e82f8cb8,
+        type: 3}
+      propertyPath: LayerToCheck
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 54d0f9332284d1e49a853c52e82f8cb8, type: 3}

@@ -14,6 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: 0}
   handRig: {fileID: 6841670339516728016, guid: bbb853752ce080d43942f984fc1210ac, type: 3}
+  pickupPrefab: {fileID: 0}
+  baseDamage: 5
+  attackRate: 0.25
   weaponType: 0
   range: 0.5
   hitDuration: 0.25

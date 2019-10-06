@@ -16,6 +16,8 @@ MonoBehaviour:
   handRig: {fileID: 7288191641019760427, guid: d1996ff726157144d9e995df322fa285, type: 3}
   pickupPrefab: {fileID: 7336318769845631783, guid: 4590dfd8f1271e946b4cd4567b9a0239,
     type: 3}
+  baseDamage: 10
+  attackRate: 0.5
   weaponType: 0
   range: 1
   hitDuration: 0.1

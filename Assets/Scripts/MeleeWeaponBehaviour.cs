@@ -15,7 +15,7 @@ public abstract class MeleeWeaponBehaviour : WeaponBehaviour {
             if (controller) {
                 Vector3 hitBackDir = hit.transform.position - manager.transform.position;
                 hitBackDir = hitBackDir.normalized;
-                controller.SetHitback(hitBackDir);
+                controller.Damage(weapon.baseDamage, hitBackDir);
                 return WeaponUseStates.HIT;
             }
         }

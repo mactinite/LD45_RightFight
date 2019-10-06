@@ -68,7 +68,6 @@ public class ActorController : MonoBehaviour {
 
     public int health = 100;
     public void SetHitback(Vector3 direction) {
-        health -= 5;
         hit = true;
         hitbackTimer = 0;
         hitBack = direction;
@@ -80,6 +79,11 @@ public class ActorController : MonoBehaviour {
             }
             Destroy(this.gameObject);
         }
+    }
+
+    public void Damage(int damage, Vector3 hitbackDir){
+        SetHitback(hitbackDir);
+        health -= damage;
     }
 
     public Vector3 hitBack = Vector3.zero;

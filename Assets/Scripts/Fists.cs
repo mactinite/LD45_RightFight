@@ -17,6 +17,5 @@ public class Fists : MeleeWeaponBehaviour {
     
     public override void OnAttack(WeaponManager manager) {
         this.anim.SetTrigger("Attack");
-
     }
 }
