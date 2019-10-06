@@ -14,18 +14,35 @@ public class WeaponManager : MonoBehaviour, IWEaponManager {
 
     public WeaponBehaviour currentWeapon;
 
+    private HUDController hudController;
     public int comboCount = 0;
     public float comboBufferTime = 0.1f;
     public bool combo = false;
     private float comboTimer;
 
+    public bool updateUI = false;
+
 
     void Awake() {
         Equip();
+        hudController = HUDController._instance as HUDController;
     }
     void Update() {
         if (combo) {
             comboTimer += Time.deltaTime;
+        }
+
+        if (comboTimer > comboBufferTime) {
+            combo = false;
+            comboCount = 0;
+            comboTimer = 0;
+            if (updateUI) {
+                hudController.ComboCount = comboCount;
+            }
+        }
+        if (updateUI) {
+            hudController.ComboTimer = comboTimer;
+            hudController.ComboBufferTime = comboBufferTime;
         }
     }
     public void Attack() {
@@ -50,15 +67,18 @@ public class WeaponManager : MonoBehaviour, IWEaponManager {
             comboTimer = 0;
             comboCount = 0;
         }
+        if (updateUI) {
+            hudController.ComboCount = comboCount;
+        }
     }
 
-    public void Equip(){
+    public void Equip() {
         Equip(null);
     }
 
     public void Equip(WeaponAsset newWeapon) {
-        
-        if(newWeapon != null){
+
+        if (newWeapon != null) {
             equippedWeapon = newWeapon;
         }
 
