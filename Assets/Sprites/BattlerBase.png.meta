@@ -20,6 +20,9 @@ TextureImporter:
   - first:
       213: 7935130653597828913
     second: BattlerBase_5
+  - first:
+      213: 7060204263107088054
+    second: BattlerBase_6
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -124,7 +127,7 @@ TextureImporter:
         width: 92
         height: 110
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -145,7 +148,7 @@ TextureImporter:
         width: 35
         height: 33
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -166,7 +169,7 @@ TextureImporter:
         width: 35
         height: 33
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -187,7 +190,7 @@ TextureImporter:
         width: 28
         height: 20
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -208,7 +211,7 @@ TextureImporter:
         width: 75
         height: 145
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -229,7 +232,7 @@ TextureImporter:
         width: 28
         height: 20
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -237,6 +240,27 @@ TextureImporter:
       bones: []
       spriteID: 0c1ab470d750b0f498fe8e7d98003618
       internalID: 7935130653597828913
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BattlerBase_6
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 231
+        width: 25
+        height: 221
+      alignment: 9
+      pivot: {x: 0.5, y: 0.14081529}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28508399921f4334599736fd2cc72f77
+      internalID: 7060204263107088054
       vertices: []
       indices: 
       edges: []

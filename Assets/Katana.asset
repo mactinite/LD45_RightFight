@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f55a2e9d2332a45bfb499dde762d633a, type: 3}
+  m_Name: Katana
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 7060204263107088054, guid: 2fc1e731aa18ffb40a0880b040b4d862, type: 3}
+  handRig: {fileID: 7288191641019760427, guid: d1996ff726157144d9e995df322fa285, type: 3}
+  weaponType: 0
+  range: 1
+  hitDuration: 0.1

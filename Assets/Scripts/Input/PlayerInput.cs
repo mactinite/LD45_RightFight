@@ -20,6 +20,7 @@ namespace CustomInput {
         public KeyCode[] JumpKeys;
         public KeyCode[] PauseKeys;
         public KeyCode[] HitKeys;
+        public KeyCode[] PickupKeys;
 
         [SerializeField]
         [HideInInspector]
@@ -79,6 +80,7 @@ namespace CustomInput {
             buttonCommands.Add(new Command<bool>(Constants.JUMP_BUTTON_UP, () => { return GetAllKeysUp(JumpKeys); }));
             buttonCommands.Add(new Command<bool>(Constants.PAUSE_BUTTON, () => { return GetAllKeysDown(PauseKeys); }));
             buttonCommands.Add(new Command<bool>(Constants.HIT_BUTTON, () => { return GetAllKeysDown(HitKeys); }));
+            buttonCommands.Add(new Command<bool>(Constants.PICKUP_WEAPON, () => { return GetAllKeysDown(PickupKeys); }));
 
             axisCommands.Add(new Command<float>(Constants.MOVE_X, () => { return Input.GetAxisRaw(MoveXAxis); }));
             axisCommands.Add(new Command<float>(Constants.MOVE_Y, () => { return Input.GetAxisRaw(MoveYAxis); }));

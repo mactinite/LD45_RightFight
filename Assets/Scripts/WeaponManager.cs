@@ -22,6 +22,8 @@ public class WeaponManager : MonoBehaviour, IWEaponManager {
 
     public bool updateUI = false;
 
+    public WeaponPickup pickupWeapon;
+
 
     void Start() {
         Equip();
@@ -126,6 +128,15 @@ public class WeaponManager : MonoBehaviour, IWEaponManager {
 
         meleeHitbox.SetHitboxSize(size);
         meleeHitbox.SetHitboxCenter(center);
+    }
+
+    public void PickUp(){
+        if(pickupWeapon){
+            equippedWeapon = pickupWeapon.pickup;
+
+            pickupWeapon.PickUp();
+            Equip();
+        }
     }
 
 }

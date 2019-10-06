@@ -9,5 +9,7 @@ namespace CustomInput {
         public const string MOVE_X = "MoveX";
         public const string MOVE_Y = "MoveY";
         public const string HIT_BUTTON = "HIT";
+
+        public const string PICKUP_WEAPON = "PICKUP_WEAPON";
     }
 }

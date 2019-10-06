@@ -24,6 +24,9 @@ public class ActorController : MonoBehaviour {
 
     [HideInInspector]
     public bool hit = false;
+
+    [HideInInspector]
+    public bool pickup = false;
     public float hitBackTime = 0.25f;
     public float hitBackSpeed = 12.0f;
 
@@ -53,9 +56,13 @@ public class ActorController : MonoBehaviour {
 
     public void HandleWeapons() {
         hitButton = input.GetButtonInput(Constants.HIT_BUTTON);
-
+        pickup = input.GetButtonInput(Constants.PICKUP_WEAPON);
         if (hitButton) {
             weaponManager.Attack();
+        }
+
+        if(pickup){
+            weaponManager.PickUp();
         }
     }
 
@@ -80,6 +87,8 @@ public class ActorController : MonoBehaviour {
 
         jumpDown = input.GetButtonInput(Constants.JUMP_BUTTON_DOWN);
         jump = input.GetButtonInput(Constants.JUMP_BUTTON);
+
+
 
         if (characterController.isGrounded) {
             moveDirection.y = -1;
