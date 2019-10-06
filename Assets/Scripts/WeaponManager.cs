@@ -6,7 +6,7 @@ public class WeaponManager : MonoBehaviour, IWEaponManager {
     public WeaponAsset equippedWeapon;
     public HitboxMonitor meleeHitbox;
 
-    public Vector3 handRigPosition = Vector3.zero;
+    public Transform handRigPosition;
 
 
     public Transform battlerRig;
@@ -89,18 +89,14 @@ public class WeaponManager : MonoBehaviour, IWEaponManager {
             if (currentHandRig) {
                 Destroy(currentHandRig.gameObject);
             }
-            currentHandRig = Transform.Instantiate(equippedWeapon.handRig, handRigPosition, equippedWeapon.handRig.rotation, battlerRig);
-            currentHandRig.localPosition = handRigPosition;
-            currentHandRig.localRotation = Quaternion.identity;
+            currentHandRig = Transform.Instantiate(equippedWeapon.handRig, handRigPosition);
             currentWeapon = currentHandRig.GetComponent<WeaponBehaviour>();
             currentWeapon.Equip(this);
         } else {
             if (currentHandRig) {
                 Destroy(currentHandRig.gameObject);
             }
-            currentHandRig = Transform.Instantiate(unequippedWeapon.handRig, handRigPosition, unequippedWeapon.handRig.rotation, battlerRig);
-            currentHandRig.localPosition = handRigPosition;
-            currentHandRig.localRotation = Quaternion.identity;
+            currentHandRig = Transform.Instantiate(unequippedWeapon.handRig, handRigPosition);
             currentWeapon = currentHandRig.GetComponent<WeaponBehaviour>();
             currentWeapon.Equip(this);
         }

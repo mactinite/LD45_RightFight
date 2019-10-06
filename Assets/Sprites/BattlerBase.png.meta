@@ -23,6 +23,12 @@ TextureImporter:
   - first:
       213: 7060204263107088054
     second: BattlerBase_6
+  - first:
+      213: -2517469748935570627
+    second: BattlerBase_7
+  - first:
+      213: -7113303685026878414
+    second: BattlerBase_8
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -123,7 +129,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 9
-        y: 391
+        y: 395
         width: 92
         height: 110
       alignment: 0
@@ -143,8 +149,8 @@ TextureImporter:
       name: BattlerBase_1
       rect:
         serializedVersion: 2
-        x: 118
-        y: 468
+        x: 109
+        y: 472
         width: 35
         height: 33
       alignment: 0
@@ -164,8 +170,8 @@ TextureImporter:
       name: BattlerBase_2
       rect:
         serializedVersion: 2
-        x: 118
-        y: 430
+        x: 109
+        y: 434
         width: 35
         height: 33
       alignment: 0
@@ -185,10 +191,10 @@ TextureImporter:
       name: BattlerBase_3
       rect:
         serializedVersion: 2
-        x: 125
-        y: 395
+        x: 109
+        y: 389
         width: 28
-        height: 20
+        height: 34
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -206,10 +212,10 @@ TextureImporter:
       name: BattlerBase_4
       rect:
         serializedVersion: 2
-        x: 26
-        y: 230
-        width: 75
-        height: 145
+        x: 13
+        y: 304
+        width: 83
+        height: 79
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -227,10 +233,10 @@ TextureImporter:
       name: BattlerBase_5
       rect:
         serializedVersion: 2
-        x: 125
-        y: 365
+        x: 109
+        y: 351
         width: 28
-        height: 20
+        height: 33
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -248,12 +254,12 @@ TextureImporter:
       name: BattlerBase_6
       rect:
         serializedVersion: 2
-        x: 163
-        y: 231
+        x: 157
+        y: 284
         width: 25
         height: 221
-      alignment: 9
-      pivot: {x: 0.5, y: 0.14081529}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -261,6 +267,48 @@ TextureImporter:
       bones: []
       spriteID: 28508399921f4334599736fd2cc72f77
       internalID: 7060204263107088054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BattlerBase_7
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 407
+        width: 69
+        height: 94
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 177833ebbca85b64aaef9d6c8b2ce7f7
+      internalID: -2517469748935570627
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BattlerBase_8
+      rect:
+        serializedVersion: 2
+        x: 202
+        y: 351
+        width: 56
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07095756f6101934986f5e6d150cb6f7
+      internalID: -7113303685026878414
       vertices: []
       indices: 
       edges: []
