@@ -14,14 +14,15 @@ public class WeaponBehaviour : MonoBehaviour {
         DEPLETED,
     }
     public WeaponUseStates Use(int comboCount, WeaponManager manager) {
-        if (!infiniteUses) {
+        WeaponUseStates result = Attack(comboCount, manager);
+        if (!infiniteUses && result == WeaponUseStates.HIT) {
             --uses;
             if (uses < 0) {
                 return WeaponUseStates.DEPLETED;
             }
         }
 
-        return Attack(comboCount, manager);
+        return result;
     }
 
     public virtual WeaponUseStates Attack(int comboCount, WeaponManager manager) {

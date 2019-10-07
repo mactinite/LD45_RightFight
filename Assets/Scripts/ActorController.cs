@@ -14,7 +14,7 @@ public class ActorController : MonoBehaviour {
     [HideInInspector]
     public CharacterController characterController;
 
-    private IWEaponManager weaponManager;
+    private WeaponManager weaponManager;
 
     private bool jump = false;
     private bool jumpDown = false;
@@ -42,10 +42,14 @@ public class ActorController : MonoBehaviour {
             Debug.LogWarning("No Character Controller on game object!");
         }
 
-        weaponManager = GetComponent<IWEaponManager>();
+        weaponManager = GetComponent<WeaponManager>();
         if (weaponManager == null) {
             Debug.LogWarning("No Weapon Manager on game object!");
         }
+    }
+
+    void Start() {
+        hudController = HUDController._instance as HUDController;
     }
 
     // Update is called once per frame
@@ -61,7 +65,7 @@ public class ActorController : MonoBehaviour {
             weaponManager.Attack();
         }
 
-        if(pickup){
+        if (pickup) {
             weaponManager.PickUp();
         }
     }
@@ -74,16 +78,20 @@ public class ActorController : MonoBehaviour {
         hitBack.y += hitBackSpeed;
         if (health < 0) {
             WeaponAsset equipped = weaponManager.GetEquippedWeapon();
-            if(equipped){
+            if (equipped) {
                 Instantiate(equipped.pickupPrefab, transform.position, equipped.pickupPrefab.rotation);
             }
             Destroy(this.gameObject);
         }
     }
 
-    public void Damage(int damage, Vector3 hitbackDir){
+    private HUDController hudController;
+    public void Damage(int damage, Vector3 hitbackDir) {
         SetHitback(hitbackDir);
         health -= damage;
+        if (weaponManager.updateUI) {
+            hudController.PlayerHealth = health;
+        }
     }
 
     public Vector3 hitBack = Vector3.zero;

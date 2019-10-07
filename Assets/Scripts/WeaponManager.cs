@@ -26,8 +26,8 @@ public class WeaponManager : MonoBehaviour, IWEaponManager {
 
 
     void Start() {
-        Equip();
         hudController = HUDController._instance as HUDController;
+        Equip();
     }
     void Update() {
         if (combo) {
@@ -48,7 +48,7 @@ public class WeaponManager : MonoBehaviour, IWEaponManager {
         }
 
         attackTimer += Time.deltaTime;
-        if(attackTimer > attackRate){
+        if (attackTimer > attackRate) {
             canAttack = true;
         }
     }
@@ -58,7 +58,7 @@ public class WeaponManager : MonoBehaviour, IWEaponManager {
 
     bool canAttack = true;
     public void Attack() {
-        if(!canAttack){
+        if (!canAttack) {
             return;
         }
         // handle attackRate
@@ -83,6 +83,15 @@ public class WeaponManager : MonoBehaviour, IWEaponManager {
         }
         if (updateUI) {
             hudController.ComboCount = comboCount;
+            int weaponUses = currentWeapon.uses;
+
+            if(weaponUses < 0){
+                char infinity = '\u221E';
+                hudController.CurrentWeaponUses = infinity.ToString();
+            } else {
+                hudController.CurrentWeaponUses = weaponUses.ToString();
+            }
+            
         }
     }
 
@@ -94,6 +103,7 @@ public class WeaponManager : MonoBehaviour, IWEaponManager {
 
         if (newWeapon != null) {
             equippedWeapon = newWeapon;
+
         }
 
         // initialize newly picked up weapon
@@ -105,6 +115,10 @@ public class WeaponManager : MonoBehaviour, IWEaponManager {
             currentWeapon = currentHandRig.GetComponent<WeaponBehaviour>();
             currentWeapon.Equip(this);
             attackRate = equippedWeapon.attackRate;
+            if (updateUI) {
+                hudController.CurrentWeaponSprite = equippedWeapon.sprite;
+                hudController.CurrentWeaponUses = currentWeapon.uses.ToString();
+            }
         } else {
             if (currentHandRig) {
                 Destroy(currentHandRig.gameObject);
@@ -113,6 +127,11 @@ public class WeaponManager : MonoBehaviour, IWEaponManager {
             currentWeapon = currentHandRig.GetComponent<WeaponBehaviour>();
             attackRate = unequippedWeapon.attackRate;
             currentWeapon.Equip(this);
+            if (updateUI) {
+                hudController.CurrentWeaponSprite = unequippedWeapon.sprite;
+                char infinity = '\u221E';
+                hudController.CurrentWeaponUses = infinity.ToString();
+            }
         }
     }
 
@@ -139,8 +158,8 @@ public class WeaponManager : MonoBehaviour, IWEaponManager {
         meleeHitbox.SetHitboxCenter(center);
     }
 
-    public void PickUp(){
-        if(pickupWeapon){
+    public void PickUp() {
+        if (pickupWeapon) {
             equippedWeapon = pickupWeapon.pickup;
 
             pickupWeapon.PickUp();

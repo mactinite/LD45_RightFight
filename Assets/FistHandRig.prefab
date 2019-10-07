@@ -146,7 +146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a317e6519d074926bdf5d8091332892, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uses: 20
+  uses: -1
   infiniteUses: 1
   weapon: {fileID: 0}
   weaponManager: {fileID: 0}

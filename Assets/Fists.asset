@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f55a2e9d2332a45bfb499dde762d633a, type: 3}
   m_Name: Fists
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
+  sprite: {fileID: 3957592767271389715, guid: 2fc1e731aa18ffb40a0880b040b4d862, type: 3}
   handRig: {fileID: 6841670339516728016, guid: bbb853752ce080d43942f984fc1210ac, type: 3}
   pickupPrefab: {fileID: 0}
   baseDamage: 5
