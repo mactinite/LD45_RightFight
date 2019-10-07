@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HUDController : SingletonBehavior {
+public class HUDController : MonoBehaviour {
 
     private float comboTimer;
     private float comboBufferTime;
@@ -12,10 +12,23 @@ public class HUDController : SingletonBehavior {
     private int playerHealth;
 
     private int score = 0;
+    private WeaponAsset onGround;
 
     private string currentWeaponUses;
 
     private Sprite currentWeaponSprite;
+
+    public static HUDController _instance = null;
+
+    public Image swapImage;
+    public Image swapPanel;
+    void Awake() {
+        if (_instance == null) {
+            _instance = this;
+        } else {
+            Destroy(this);
+        }
+    }
 
     public float ComboTimer {
         get => comboTimer;
@@ -59,6 +72,19 @@ public class HUDController : SingletonBehavior {
         set {
             currentWeaponSprite = value;
             equipmentImage.sprite = value;
+        }
+    }
+
+    public WeaponAsset OnGround {
+        get => onGround;
+        set {
+            onGround = value;
+            if (value) {
+                swapPanel.gameObject.SetActive(true);
+                swapImage.sprite = value.sprite;
+            } else {
+                swapPanel.gameObject.SetActive(false);
+            }
         }
     }
 

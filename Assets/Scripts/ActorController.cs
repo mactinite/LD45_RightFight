@@ -4,6 +4,8 @@ using UnityEngine;
 using CustomInput;
 public class ActorController : MonoBehaviour {
 
+    public bool shielding;
+    public Transform shield;
     public float gravity = 20.0f;
     public float walkSpeed = 2.0f;
     public float jumpVelocity = 2.0f;
@@ -64,9 +66,12 @@ public class ActorController : MonoBehaviour {
         if (hitButton) {
             weaponManager.Attack();
         }
-
         if (pickup) {
             weaponManager.PickUp();
+        }
+
+        if (weaponManager.updateUI) {
+            hudController.OnGround = weaponManager.PickupWeapon ? weaponManager.PickupWeapon.pickup : null;
         }
     }
 
@@ -104,24 +109,33 @@ public class ActorController : MonoBehaviour {
         jumpDown = input.GetButtonInput(Constants.JUMP_BUTTON_DOWN);
         jump = input.GetButtonInput(Constants.JUMP_BUTTON);
 
-
+        shielding = jump;
 
         if (characterController.isGrounded) {
             moveDirection.y = -1;
             if (jumpDown && !hit) {
-                moveDirection.y = jumpVelocity;
+                // moveDirection.y = jumpVelocity;
             }
         }
 
 
-
-        if (characterController.velocity.y <= 0) {
-            moveDirection.y -= gravity * fallMultiplier * Time.deltaTime;
-        } else if (characterController.velocity.y > 0 && !jump) {
-            moveDirection.y -= gravity * lowJumpMultiplier * Time.deltaTime;
+        if (shielding) {
+            // moveDirection.y = jumpVelocity;
+            shield.gameObject.SetActive(true);
         } else {
-            moveDirection.y -= gravity * Time.deltaTime;
+            shield.gameObject.SetActive(false);
+            shielding = false;
         }
+
+
+
+        // if (characterController.velocity.y <= 0) {
+        //     moveDirection.y -= gravity * fallMultiplier * Time.deltaTime;
+        // } else if (characterController.velocity.y > 0 && !jump) {
+        //     moveDirection.y -= gravity * lowJumpMultiplier * Time.deltaTime;
+        // } else {
+        moveDirection.y -= gravity * Time.deltaTime;
+        // }
 
 
 

@@ -8,6 +8,7 @@ public class WeaponPickup : MonoBehaviour {
     public SpriteRenderer spriteRenderer;
 
     public GameObject topLevel;
+    
 
     private void Start() {
         spriteRenderer.sprite = pickup.sprite;
@@ -17,14 +18,14 @@ public class WeaponPickup : MonoBehaviour {
     }
     void OnTriggerStay(Collider collider) {
         if (collider.tag == "Player") {
-            collider.GetComponent<WeaponManager>().pickupWeapon = this;
+            collider.GetComponent<WeaponManager>().PickupWeapon = this;
         }
     }
 
     private void OnTriggerExit(Collider collider) {
         if (collider.tag == "Player") {
             inRange = false;
-            collider.GetComponent<WeaponManager>().pickupWeapon = null;
+            collider.GetComponent<WeaponManager>().PickupWeapon = null;
         }
     }
 

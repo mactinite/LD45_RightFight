@@ -65,7 +65,7 @@ namespace CustomInput {
         public Transform target;
 
         public bool hitButton = false;
-        private bool hasHit = false;
+        private bool hasHit = true;
         private bool inRange;
         public float hitTimeout = 0.5f;
         private float hitTimer = 0.0f;
@@ -93,11 +93,9 @@ namespace CustomInput {
                 if(col && col.tag == "Player"){
                     inRange = true;
                     reactionTimer+= Time.deltaTime;
-                    tellEffects.gameObject.SetActive(true);
                 } else{
                     inRange = false;
                     reactionTimer = 0;
-                    tellEffects.gameObject.SetActive(false);
                 }
         
 
@@ -105,6 +103,7 @@ namespace CustomInput {
                     moveDirection = moveDirection * 0.1f;
                     hasHit = true;
                     hitButton = true;
+                    tellEffects.gameObject.SetActive(false);
                 }
 
                 if (hasHit) {
@@ -114,6 +113,10 @@ namespace CustomInput {
                 if (hitTimer > hitTimeout) {
                     hitTimer = 0;
                     hasHit = false;
+                }
+
+                if(hitTimer > hitTimeout / 2){
+                    tellEffects.gameObject.SetActive(true);
                 }
             }
 

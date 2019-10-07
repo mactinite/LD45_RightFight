@@ -86,6 +86,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acdd619b374d9354ab05efc56299ab01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shielding: 0
+  shield: {fileID: 3179298705663109164}
   gravity: 20
   walkSpeed: 1
   jumpVelocity: 8
@@ -476,6 +478,12 @@ MonoBehaviour:
 --- !u!4 &8186792050953327859 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1844181187174011481, guid: 54d0f9332284d1e49a853c52e82f8cb8,
+    type: 3}
+  m_PrefabInstance: {fileID: 7496957338170394282}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &3179298705663109164 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4906013935960796806, guid: 54d0f9332284d1e49a853c52e82f8cb8,
     type: 3}
   m_PrefabInstance: {fileID: 7496957338170394282}
   m_PrefabAsset: {fileID: 0}

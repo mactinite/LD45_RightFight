@@ -25,12 +25,14 @@ public class WeaponManager : MonoBehaviour, IWEaponManager {
 
     public bool updateUI = false;
 
-    public WeaponPickup pickupWeapon;
+    private WeaponPickup pickupWeapon;
+    private ActorController actor;
 
 
     void Start() {
         hudController = HUDController._instance as HUDController;
         scoreManager = ScoreManager._instance as ScoreManager;
+        actor = GetComponent<ActorController>();
         Equip();
     }
     void Update() {
@@ -53,7 +55,7 @@ public class WeaponManager : MonoBehaviour, IWEaponManager {
 
         attackTimer += Time.deltaTime;
         if (attackTimer > attackRate) {
-            canAttack = true;
+            canAttack = !actor.shielding;
         }
     }
 
@@ -61,13 +63,16 @@ public class WeaponManager : MonoBehaviour, IWEaponManager {
     float attackTimer = 0;
 
     bool canAttack = true;
+
+    public WeaponPickup PickupWeapon { get => pickupWeapon; set => pickupWeapon = value; }
+
     public void Attack() {
         if (!canAttack) {
             return;
         }
         canAttack = false;
         attackTimer = 0;
-        // handle attackRate
+
         WeaponBehaviour.WeaponUseStates result;
 
         result = currentWeapon.Use(comboCount, this);
@@ -94,13 +99,13 @@ public class WeaponManager : MonoBehaviour, IWEaponManager {
             hudController.ComboCount = comboCount;
             int weaponUses = currentWeapon.uses;
 
-            if(weaponUses < 0){
+            if (weaponUses < 0) {
                 char infinity = '\u221E';
                 hudController.CurrentWeaponUses = infinity.ToString();
             } else {
                 hudController.CurrentWeaponUses = weaponUses.ToString();
             }
-            
+
         }
     }
 
@@ -168,10 +173,10 @@ public class WeaponManager : MonoBehaviour, IWEaponManager {
     }
 
     public void PickUp() {
-        if (pickupWeapon) {
-            equippedWeapon = pickupWeapon.pickup;
-
-            pickupWeapon.PickUp();
+        if (PickupWeapon) {
+            equippedWeapon = PickupWeapon.pickup;
+            PickupWeapon.PickUp();
+            PickupWeapon = null;
             Equip();
         }
     }
@@ -180,7 +185,7 @@ public class WeaponManager : MonoBehaviour, IWEaponManager {
         return equippedWeapon;
     }
 
-    public WeaponAsset getCurrentWeaponAsset(){
+    public WeaponAsset getCurrentWeaponAsset() {
         return equippedWeapon ? equippedWeapon : unequippedWeapon;
     }
 }

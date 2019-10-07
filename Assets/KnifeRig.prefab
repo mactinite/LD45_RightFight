@@ -665,9 +665,9 @@ ParticleSystem:
     boxThickness: {x: 0, y: 0, z: 0}
     radiusThickness: 1
     donutRadius: 0.2
-    m_Position: {x: 0, y: 0.97, z: -0.1}
+    m_Position: {x: 0, y: 0.4, z: -0.1}
     m_Rotation: {x: 0, y: 0, z: 90}
-    m_Scale: {x: 0.59, y: 1, z: 1}
+    m_Scale: {x: 0.29, y: 1, z: 1}
     placementMode: 0
     m_MeshMaterialIndex: 0
     m_MeshNormalOffset: 0
@@ -4778,7 +4778,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4839918477378277872}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.05, y: -0.19, z: 0.002}
+  m_LocalPosition: {x: 0.031, y: -0.089, z: 0.002}
   m_LocalScale: {x: 1, y: 0.726814, z: 1}
   m_Children:
   - {fileID: 11935400}
@@ -4823,8 +4823,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7060204263107088054, guid: 2fc1e731aa18ffb40a0880b040b4d862,
-    type: 3}
+  m_Sprite: {fileID: 832039101429025091, guid: 2fc1e731aa18ffb40a0880b040b4d862, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
@@ -4848,7 +4847,7 @@ GameObject:
   - component: {fileID: 3983875212617064413}
   - component: {fileID: 5846465822386592293}
   m_Layer: 0
-  m_Name: KatanaHandRig
+  m_Name: KnifeRig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4901,7 +4900,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a317e6519d074926bdf5d8091332892, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uses: 5
+  uses: 20
   infiniteUses: 0
   weapon: {fileID: 0}
   weaponManager: {fileID: 0}

@@ -100,7 +100,7 @@ public class StartOptions : MonoBehaviour {
 		//Load the selected scene, by scene index number in build settings
 		SceneManager.LoadScene (sceneToStart);
 
-		StartCoroutine(FadeCanvasGroupAlpha(1f,0f, menuCanvasGroup));
+		StartCoroutine(FadeCanvasGroupAlpha(1f,0f, fadeOutImageCanvasGroup));
 	}
 
 	public void HideDelayed()

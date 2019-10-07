@@ -19,11 +19,13 @@ public abstract class MeleeWeaponBehaviour : WeaponBehaviour {
         if (hit) {
             hitSource.PlayOneShot(hitSounds[Random.Range(0,hitSounds.Length)]);
             ActorController controller = hit.GetComponent<ActorController>();
-            if (controller) {
+            if (controller && !controller.shielding) {
                 Vector3 hitBackDir = hit.transform.position - manager.transform.position;
                 hitBackDir = hitBackDir.normalized;
                 controller.Damage(weapon.baseDamage, hitBackDir);
                 return WeaponUseStates.HIT;
+            } else if (controller.shielding){
+                return WeaponUseStates.MISS;
             }
         }
         hitSource.PlayOneShot(missSounds[Random.Range(0,missSounds.Length)]);
