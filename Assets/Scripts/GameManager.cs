@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour {
     private void Update() {
         if (roundEnded) {
             LoadNextRound();
+            roundEnded = false;
         }
     }
 

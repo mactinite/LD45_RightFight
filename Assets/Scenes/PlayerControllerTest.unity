@@ -1034,6 +1034,7 @@ GameObject:
   - component: {fileID: 607880825}
   - component: {fileID: 607880826}
   - component: {fileID: 607880824}
+  - component: {fileID: 607880827}
   m_Layer: 5
   m_Name: IndicatorText
   m_TagString: Untagged
@@ -1115,6 +1116,22 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: FIGHT
+--- !u!111 &607880827
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 607880822}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 8dd6b04c369137d439dcd391b5e93706, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 8dd6b04c369137d439dcd391b5e93706, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
