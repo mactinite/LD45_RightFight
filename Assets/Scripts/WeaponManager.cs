@@ -28,11 +28,15 @@ public class WeaponManager : MonoBehaviour, IWEaponManager {
     private WeaponPickup pickupWeapon;
     private ActorController actor;
 
+    private float startingXpos;
 
     void Start() {
         hudController = HUDController._instance as HUDController;
         scoreManager = ScoreManager._instance as ScoreManager;
         actor = GetComponent<ActorController>();
+        startingXpos = transform.position.x;
+        hudController.ComboCount = comboCount;
+        scoreManager.CurrentMultiplier = Mathf.Max(1, comboCount);
         Equip();
     }
     void Update() {
@@ -51,6 +55,13 @@ public class WeaponManager : MonoBehaviour, IWEaponManager {
         if (updateUI) {
             hudController.ComboTimer = comboTimer;
             hudController.ComboBufferTime = comboBufferTime;
+            
+
+            if (transform.position.x - startingXpos > 1) {
+                scoreManager.AddScore(Mathf.RoundToInt(transform.position.x - startingXpos));
+                startingXpos = transform.position.x;
+            }
+
         }
 
         attackTimer += Time.deltaTime;
@@ -85,7 +96,7 @@ public class WeaponManager : MonoBehaviour, IWEaponManager {
             combo = true;
             comboTimer = 0;
             comboCount++;
-            scoreManager.CurrentMultiplier = comboCount;
+            scoreManager.CurrentMultiplier = Mathf.Max(1, comboCount);
             scoreManager.AddScore(getCurrentWeaponAsset().baseDamage);
         }
 
@@ -93,7 +104,7 @@ public class WeaponManager : MonoBehaviour, IWEaponManager {
             combo = false;
             comboTimer = 0;
             comboCount = 0;
-            scoreManager.CurrentMultiplier = comboCount;
+            scoreManager.CurrentMultiplier = Mathf.Max(1, comboCount); ;
         }
         if (updateUI) {
             hudController.ComboCount = comboCount;

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using CustomInput;
 public class EnemySpawner : MonoBehaviour {
     public float startDelay = 5;
@@ -8,6 +9,8 @@ public class EnemySpawner : MonoBehaviour {
     public WeaponAsset[] weapons;
     public Transform enemyPrefab;
     public Transform target;
+
+    public Transform secondSpawnPos;
 
     public float randomRange = 3;
 
@@ -26,68 +29,82 @@ public class EnemySpawner : MonoBehaviour {
 
     public bool roundStarted;
 
+    public UnityEvent onRoundEnd;
+
+    private HUDController hudController;
+
+    private void Awake() {
+        hudController = HUDController._instance;
+    }
     private void OnEnable() {
+        hudController = HUDController._instance;
         startTimer = 0;
         spawnTimer = 0;
-        enemiesSpawned=0;
-        enemiesAlive=0;
-        enemiesKilled=0;
+        enemiesSpawned = 0;
+        enemiesAlive = 0;
+        enemiesKilled = 0;
         roundStarted = false;
-        HUDController._instance.RoundStart = false;
-        HUDController._instance.IndicatorTextString = "FIGHT";
+        hudController.RoundStart = false;
+        hudController.IndicatorTextString = "FIGHT";
     }
     // Update is called once per frame
     void Update() {
         spawnTimer += Time.deltaTime;
         startTimer += Time.deltaTime;
-        if(startTimer > startDelay){
+        if (startTimer > startDelay) {
             roundStarted = true;
-            HUDController._instance.RoundStart = true;
+            hudController.RoundStart = true;
         } else {
-            HUDController._instance.WaveCountdown = Mathf.RoundToInt(startDelay - startTimer);
-            HUDController._instance.RoundStart = false;
+            hudController.WaveCountdown = Mathf.RoundToInt(startDelay - startTimer);
+            hudController.RoundStart = false;
         }
 
         if (roundStarted && spawnTimer > spawnInterval && enemiesAlive < minEnemies && enemiesSpawned < enemiesInRound) {
-            for (int i = 0; i < spawnRate; i++) {
-                Vector3 randomRangeOffset = new Vector3(Random.Range(-randomRange, randomRange), 0, Random.Range(-randomRange, randomRange));
-                Transform Enemy = Instantiate(enemyPrefab, transform.position + randomRangeOffset, enemyPrefab.rotation);
-                WeaponManager weaponManager = Enemy.gameObject.GetComponent<WeaponManager>();
-                CPUInput cpu = Enemy.gameObject.GetComponent<CPUInput>();
-                SendMessageOnDeath smod = Enemy.gameObject.GetComponent<SendMessageOnDeath>();
-                int randomIndex = Random.Range(-1, weapons.Length);
-
-                if (randomIndex < 0) {
-                    weaponManager.equippedWeapon = null;
-
-                } else {
-                    weaponManager.equippedWeapon = weapons[randomIndex];
-                }
-
-                smod.onDestroy.AddListener(EnemyDead);
-                cpu.target = target;
-                enemiesAlive++;
-                enemiesSpawned++;
-            }
-            
+            SpawnEnemies(Mathf.Min(enemiesInRound - enemiesSpawned, spawnRate));
             spawnTimer = 0;
         }
-        if(enemiesInRound - enemiesKilled  <= 0){
-            HUDController._instance.IndicatorTextString = "GO";
-            HUDController._instance.RoundStart = false;
-        } else if(enemiesInRound - enemiesKilled <= 3){
-            HUDController._instance.IndicatorTextString = enemiesInRound - enemiesKilled + " LEFT";
+        if (enemiesInRound - enemiesKilled <= 0) {
+            hudController.IndicatorTextString = "GO";
+            hudController.RoundStart = false;
+            onRoundEnd.Invoke();
+        } else if (enemiesInRound - enemiesKilled <= 3) {
+            hudController.IndicatorTextString = enemiesInRound - enemiesKilled + " LEFT";
         } else {
-            HUDController._instance.IndicatorTextString = "FIGHT";
+            hudController.IndicatorTextString = "FIGHT";
         }
     }
 
 
-    public void EnemyDead(){
+    public void SpawnEnemies(int count) {
+        for (int i = 0; i < count; i++) {
+            Transform spawnPos = Random.value >= 0.5f ? secondSpawnPos : transform;
+            Vector3 randomRangeOffset = new Vector3(Random.Range(-randomRange, randomRange), 0, Random.Range(-randomRange, randomRange));
+            Transform Enemy = Instantiate(enemyPrefab, spawnPos.position + randomRangeOffset, enemyPrefab.rotation);
+            WeaponManager weaponManager = Enemy.gameObject.GetComponent<WeaponManager>();
+            CPUInput cpu = Enemy.gameObject.GetComponent<CPUInput>();
+            SendMessageOnDeath smod = Enemy.gameObject.GetComponent<SendMessageOnDeath>();
+            int randomIndex = Random.Range(-1, weapons.Length);
+
+            if (randomIndex < 0) {
+                weaponManager.equippedWeapon = null;
+
+            } else {
+                weaponManager.equippedWeapon = weapons[randomIndex];
+            }
+
+            smod.onDestroy.AddListener(EnemyDead);
+            cpu.target = target;
+            enemiesAlive++;
+            enemiesSpawned++;
+        }
+    }
+
+    public void EnemyDead() {
         enemiesKilled++;
         enemiesAlive--;
     }
     private void OnDrawGizmos() {
         Gizmos.DrawWireSphere(transform.position, randomRange);
+        Gizmos.DrawWireSphere(secondSpawnPos.position, randomRange);
     }
 }
