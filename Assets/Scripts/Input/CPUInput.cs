@@ -72,6 +72,8 @@ namespace CustomInput {
 
         public float reactionTime = 0.75f;
         private float reactionTimer = 0;
+
+        public Transform tellEffects;
         private void Update() {
             moveDirection = target.position - transform.position;
 
@@ -91,9 +93,11 @@ namespace CustomInput {
                 if(col && col.tag == "Player"){
                     inRange = true;
                     reactionTimer+= Time.deltaTime;
+                    tellEffects.gameObject.SetActive(true);
                 } else{
                     inRange = false;
                     reactionTimer = 0;
+                    tellEffects.gameObject.SetActive(false);
                 }
         
 

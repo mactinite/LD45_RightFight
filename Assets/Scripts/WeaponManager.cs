@@ -15,6 +15,9 @@ public class WeaponManager : MonoBehaviour, IWEaponManager {
     public WeaponBehaviour currentWeapon;
 
     private HUDController hudController;
+
+    private AudioSource hitSource;
+    private ScoreManager scoreManager;
     public int comboCount = 0;
     public float comboBufferTime = 0.1f;
     public bool combo = false;
@@ -27,6 +30,7 @@ public class WeaponManager : MonoBehaviour, IWEaponManager {
 
     void Start() {
         hudController = HUDController._instance as HUDController;
+        scoreManager = ScoreManager._instance as ScoreManager;
         Equip();
     }
     void Update() {
@@ -61,6 +65,8 @@ public class WeaponManager : MonoBehaviour, IWEaponManager {
         if (!canAttack) {
             return;
         }
+        canAttack = false;
+        attackTimer = 0;
         // handle attackRate
         WeaponBehaviour.WeaponUseStates result;
 
@@ -74,12 +80,15 @@ public class WeaponManager : MonoBehaviour, IWEaponManager {
             combo = true;
             comboTimer = 0;
             comboCount++;
+            scoreManager.CurrentMultiplier = comboCount;
+            scoreManager.AddScore(getCurrentWeaponAsset().baseDamage);
         }
 
         if (result == WeaponBehaviour.WeaponUseStates.MISS) {
             combo = false;
             comboTimer = 0;
             comboCount = 0;
+            scoreManager.CurrentMultiplier = comboCount;
         }
         if (updateUI) {
             hudController.ComboCount = comboCount;
@@ -169,5 +178,9 @@ public class WeaponManager : MonoBehaviour, IWEaponManager {
 
     public WeaponAsset GetEquippedWeapon() {
         return equippedWeapon;
+    }
+
+    public WeaponAsset getCurrentWeaponAsset(){
+        return equippedWeapon ? equippedWeapon : unequippedWeapon;
     }
 }

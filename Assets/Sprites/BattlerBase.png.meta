@@ -29,6 +29,9 @@ TextureImporter:
   - first:
       213: -7113303685026878414
     second: BattlerBase_8
+  - first:
+      213: -7961172006494896442
+    second: BattlerBase_9
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -309,6 +312,27 @@ TextureImporter:
       bones: []
       spriteID: 07095756f6101934986f5e6d150cb6f7
       internalID: -7113303685026878414
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BattlerBase_9
+      rect:
+        serializedVersion: 2
+        x: 282
+        y: 458
+        width: 48
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23a188fcb2877914fad2bb93cc5e2010
+      internalID: -7961172006494896442
       vertices: []
       indices: 
       edges: []

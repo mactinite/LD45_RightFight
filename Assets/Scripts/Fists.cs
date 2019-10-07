@@ -3,7 +3,6 @@ using UnityEngine;
 public class Fists : MeleeWeaponBehaviour {
 
     private Animator anim;
-    
 
     private void Update() {
         this.anim.SetBool("Combo", weaponManager.combo);

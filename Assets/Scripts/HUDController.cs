@@ -43,7 +43,7 @@ public class HUDController : SingletonBehavior {
         get => score;
         set {
             score = value;
-            scoreText.text = value.ToString() + "x";
+            scoreText.text = value.ToString();
         }
     }
 
