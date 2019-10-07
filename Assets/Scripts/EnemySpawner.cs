@@ -14,14 +14,13 @@ public class EnemySpawner : MonoBehaviour {
     public float randomRange = 3;
 
     public int enemiesAlive;
-
-    //Temporary
     public int spawnRate = 2;
 
     public float spawnInterval = 5;
 
+    public int minEnemies = 3;
+
     private float spawnTimer;
-    /*-------*/
 
     private void OnEnable() {
         startTimer = 0;
@@ -34,7 +33,7 @@ public class EnemySpawner : MonoBehaviour {
     void Update() {
         spawnTimer += Time.deltaTime;
         startTimer += Time.deltaTime;
-        if (startTimer > startDelay && spawnTimer > spawnInterval && enemiesAlive <= 2) {
+        if (startTimer > startDelay && spawnTimer > spawnInterval && enemiesAlive < minEnemies) {
             for (int i = 0; i < spawnRate; i++) {
                 Vector3 randomRangeOffset = new Vector3(Random.Range(-randomRange, randomRange), 0, Random.Range(-randomRange, randomRange));
                 Transform Enemy = Instantiate(enemyPrefab, spawnPosition.position + randomRangeOffset, enemyPrefab.rotation);

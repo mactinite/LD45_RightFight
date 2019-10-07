@@ -392,7 +392,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de51f81a98bd53641bb0c211420162da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startDelay: 5
+  startDelay: 2
   weapons:
   - {fileID: 11400000, guid: f9f9bbb11430597448a44ad7761efc78, type: 2}
   - {fileID: 11400000, guid: c6b117cd4a815034598c07c87788c445, type: 2}
@@ -408,10 +408,11 @@ MonoBehaviour:
     type: 3}
   spawnPosition: {fileID: 0}
   target: {fileID: 8854305442397820776}
-  randomRange: 5.75
+  randomRange: 3.5
   enemiesAlive: 0
   spawnRate: 2
   spawnInterval: 5
+  minEnemies: 3
 --- !u!4 &178403053
 Transform:
   m_ObjectHideFlags: 0
@@ -420,7 +421,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 178403051}
   m_LocalRotation: {x: -0.30070576, y: -0, z: -0, w: 0.953717}
-  m_LocalPosition: {x: 15.52, y: -2.42, z: 6.2}
+  m_LocalPosition: {x: 15.52, y: 0.38, z: 10.21}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 963194228}
@@ -1356,7 +1357,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2eb9cf746f99d84c94ed6de355b4038, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxX: 10
+  maxX: 50
   minX: -20
   speed: 5
   target: {fileID: 8854305442397820776}
@@ -1405,7 +1406,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 465656, guid: b046278bb9b6e104790392b566667ba5, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 465656, guid: b046278bb9b6e104790392b566667ba5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1536,7 +1537,7 @@ MonoBehaviour:
   - {fileID: 1943862347511479761, guid: cd31948a94562de4eb173b2edb77225b, type: 3}
   mainCamera: {fileID: 963194227}
   startingAmount: 0
-  loadBufferRange: 25
+  loadBufferRange: 100
   backgroundOffset: {x: 20, y: 0, z: 0}
 --- !u!4 &1023233215
 Transform:
@@ -3453,7 +3454,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4321887684086927510}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0014925, y: 4.87, z: -9.39}
+  m_LocalPosition: {x: -0.0014925, y: 4.87, z: -11.39}
   m_LocalScale: {x: 20, y: 10, z: 3}
   m_Children: []
   m_Father: {fileID: 1943862347948353613}
@@ -3777,17 +3778,22 @@ PrefabInstance:
     - target: {fileID: 5195044251659248347, guid: b16b200920a971f41bf37cd32471083d,
         type: 3}
       propertyPath: PickupKeys.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5195044251659248347, guid: b16b200920a971f41bf37cd32471083d,
         type: 3}
       propertyPath: HitKeys.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5195044251659248347, guid: b16b200920a971f41bf37cd32471083d,
         type: 3}
       propertyPath: JumpKeys.Array.size
-      value: 2
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5195044251659248347, guid: b16b200920a971f41bf37cd32471083d,
+        type: 3}
+      propertyPath: PauseKeys.Array.size
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5195044251659248347, guid: b16b200920a971f41bf37cd32471083d,
         type: 3}
@@ -3802,7 +3808,27 @@ PrefabInstance:
     - target: {fileID: 5195044251659248347, guid: b16b200920a971f41bf37cd32471083d,
         type: 3}
       propertyPath: JumpKeys.Array.data[1]
+      value: 335
+      objectReference: {fileID: 0}
+    - target: {fileID: 5195044251659248347, guid: b16b200920a971f41bf37cd32471083d,
+        type: 3}
+      propertyPath: PauseKeys.Array.data[1]
+      value: 27
+      objectReference: {fileID: 0}
+    - target: {fileID: 5195044251659248347, guid: b16b200920a971f41bf37cd32471083d,
+        type: 3}
+      propertyPath: HitKeys.Array.data[2]
       value: 330
+      objectReference: {fileID: 0}
+    - target: {fileID: 5195044251659248347, guid: b16b200920a971f41bf37cd32471083d,
+        type: 3}
+      propertyPath: JumpKeys.Array.data[2]
+      value: 334
+      objectReference: {fileID: 0}
+    - target: {fileID: 5195044251659248347, guid: b16b200920a971f41bf37cd32471083d,
+        type: 3}
+      propertyPath: PickupKeys.Array.data[2]
+      value: 333
       objectReference: {fileID: 0}
     - target: {fileID: 2139266446, guid: b16b200920a971f41bf37cd32471083d, type: 3}
       propertyPath: m_IsActive
@@ -3907,7 +3933,7 @@ Transform:
   m_Children:
   - {fileID: 2542707680280151575}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &8854305442397820776 stripped
 Transform:
