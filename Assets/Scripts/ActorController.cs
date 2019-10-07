@@ -81,21 +81,23 @@ public class ActorController : MonoBehaviour {
         hitbackTimer = 0;
         hitBack = direction;
         hitBack.y += hitBackSpeed;
-        if (health < 0) {
-            WeaponAsset equipped = weaponManager.GetEquippedWeapon();
-            if (equipped) {
-                Instantiate(equipped.pickupPrefab, transform.position, equipped.pickupPrefab.rotation);
-            }
-            Destroy(this.gameObject);
-        }
     }
 
     private HUDController hudController;
     public void Damage(int damage, Vector3 hitbackDir) {
         SetHitback(hitbackDir);
         health -= damage;
+
         if (weaponManager.updateUI) {
             hudController.PlayerHealth = health;
+        }
+
+        if (health < 0) {
+            WeaponAsset equipped = weaponManager.GetEquippedWeapon();
+            if (equipped) {
+                Instantiate(equipped.pickupPrefab, transform.position, equipped.pickupPrefab.rotation);
+            }
+            Destroy(this.gameObject);
         }
     }
 

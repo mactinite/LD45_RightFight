@@ -15,7 +15,7 @@ MonoBehaviour:
   sprite: {fileID: 3957592767271389715, guid: 2fc1e731aa18ffb40a0880b040b4d862, type: 3}
   handRig: {fileID: 6841670339516728016, guid: bbb853752ce080d43942f984fc1210ac, type: 3}
   pickupPrefab: {fileID: 0}
-  baseDamage: 5
+  baseDamage: 2
   attackRate: 0.2
   weaponType: 0
   range: 0.5
