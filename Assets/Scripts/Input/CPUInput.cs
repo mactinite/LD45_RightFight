@@ -69,6 +69,9 @@ namespace CustomInput {
         private bool inRange;
         public float hitTimeout = 0.5f;
         private float hitTimer = 0.0f;
+
+        public float reactionTime = 0.75f;
+        private float reactionTimer = 0;
         private void Update() {
             moveDirection = target.position - transform.position;
 
@@ -87,12 +90,14 @@ namespace CustomInput {
                 
                 if(col && col.tag == "Player"){
                     inRange = true;
+                    reactionTimer+= Time.deltaTime;
                 } else{
                     inRange = false;
+                    reactionTimer = 0;
                 }
+        
 
-
-                if (!hasHit && inRange) {
+                if (!hasHit && inRange && reactionTimer > reactionTime) {
                     moveDirection = moveDirection * 0.1f;
                     hasHit = true;
                     hitButton = true;

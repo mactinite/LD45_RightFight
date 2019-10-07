@@ -19,7 +19,7 @@ public class HUDController : SingletonBehavior {
     public Text comboCountUIText; 
     public Image comboTimerImage;
     void Update() {
-        comboCountUIText.text = ComboCount.ToString();
+        comboCountUIText.text = ComboCount.ToString() + "x";
         comboTimerImage.fillAmount = 1f - ComboTimer / ComboBufferTime;
     }
 }

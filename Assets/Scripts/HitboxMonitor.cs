@@ -46,18 +46,18 @@ public class HitboxMonitor : MonoBehaviour {
                 collidingWith = collider;
                 closestCollider = distance;
                 SendMessageOnDeath smod = collider.GetComponent<SendMessageOnDeath>();
-                if (!smod) {
-                    smod = collider.gameObject.AddComponent<SendMessageOnDeath>();
+                if (smod) {
+                    smod.onDestroy.AddListener(closestColliderDied);
                 }
-                smod.onDestroy.AddListener(closestColliderDied);
+                
             } else if (!collidingWith) {
                 collidingWith = collider;
                 closestCollider = distance;
                 SendMessageOnDeath smod = collider.GetComponent<SendMessageOnDeath>();
-                if (!smod) {
-                    smod = collider.gameObject.AddComponent<SendMessageOnDeath>();
+                if (smod) {
+                    smod.onDestroy.AddListener(closestColliderDied);
                 }
-                smod.onDestroy.AddListener(closestColliderDied);
+                
             }
 
 

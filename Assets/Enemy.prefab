@@ -130,6 +130,7 @@ MonoBehaviour:
   target: {fileID: 0}
   hitButton: 0
   hitTimeout: 2
+  reactionTime: 0.2
 --- !u!65 &5729546469789240742
 BoxCollider:
   m_ObjectHideFlags: 0
