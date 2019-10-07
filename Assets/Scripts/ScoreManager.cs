@@ -9,6 +9,7 @@ public class ScoreManager : MonoBehaviour {
     private HUDController hudController;
 
     public int CurrentMultiplier { get => currentMultiplier; set => currentMultiplier = value; }
+    public int CurrentScore { get => currentScore; set => currentScore = value; }
 
     public static ScoreManager _instance = null;
 

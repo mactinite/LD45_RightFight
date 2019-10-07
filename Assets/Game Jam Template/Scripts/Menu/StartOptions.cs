@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-
+using UnityEngine.Events;
 
 public class StartOptions : MonoBehaviour {
 
@@ -23,6 +23,8 @@ public class StartOptions : MonoBehaviour {
 	private float fastFadeIn = .01f;									//Very short fade time (10 milliseconds) to start playing music immediately without a click/glitch
 	private ShowPanels showPanels;										//Reference to ShowPanels script on UI GameObject, to show and hide panels
     private CanvasGroup menuCanvasGroup;
+
+	public UnityEvent onGameLoad;
 
 
     void Awake()
@@ -107,6 +109,7 @@ public class StartOptions : MonoBehaviour {
 	{
 		//Hide the main menu UI element after fading out menu for start game in scene
 		showPanels.HideMenu();
+		menuCanvasGroup.alpha = 1f;
 	}
 
 	public void StartGameInScene()
@@ -139,8 +142,10 @@ public class StartOptions : MonoBehaviour {
         }
 
         HideDelayed();
+		onGameLoad.Invoke();
         Debug.Log("Coroutine done. Game started in same scene! Put your game starting stuff here.");
     }
+
 
 
     public void PlayNewMusic()

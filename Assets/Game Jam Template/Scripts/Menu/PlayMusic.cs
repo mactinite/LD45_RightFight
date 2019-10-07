@@ -9,6 +9,7 @@ public class PlayMusic : MonoBehaviour {
     public MenuSettings menuSettings;
 	public AudioClip titleMusic;					//Assign Audioclip for title music loop
 	public AudioClip mainMusic;						//Assign Audioclip for main 
+	public AudioClip deathMusic;
 	public AudioMixerSnapshot volumeDown;			//Reference to Audio mixer snapshot in which the master volume of main mixer is turned down
 	public AudioMixerSnapshot volumeUp;				//Reference to Audio mixer snapshot in which the master volume of main mixer is turned up
 
@@ -56,6 +57,10 @@ public class PlayMusic : MonoBehaviour {
 
 		//Play the selected clip
 		musicSource.Play ();
+	}
+
+	public void PlayDeathMusic(){
+		PlaySelectedMusic(deathMusic);
 	}
 
 	//Call this function to very quickly fade up the volume of master mixer

@@ -22,18 +22,21 @@ public class GameManager : MonoBehaviour {
     private bool roundEnded;
     private void Start() {
         cameraController = GetComponent<CameraController>();
-        spawner.spawnRate = Mathf.RoundToInt(minRate + (maxRate * rate.Evaluate(currentDifficulty / 1)));
-        spawner.spawnInterval = Mathf.RoundToInt(maxInterval * interval.Evaluate(currentDifficulty / 1));
-        spawner.enemiesInRound = Mathf.RoundToInt(minTotal + maxTotal * total.Evaluate(currentDifficulty / 1));
-        spawner.enabled = true;
-        spawner.onRoundEnd.AddListener(SetUpNextRound);
+        // spawner.spawnRate = Mathf.RoundToInt(minRate + (maxRate * rate.Evaluate(currentDifficulty / 1)));
+        // spawner.spawnInterval = Mathf.RoundToInt(maxInterval * interval.Evaluate(currentDifficulty / 1));
+        // spawner.enemiesInRound = Mathf.RoundToInt(minTotal + maxTotal * total.Evaluate(currentDifficulty / 1));
     }
 
     private void Update() {
         if (roundEnded) {
             LoadNextRound();
-            roundEnded = false;
         }
+    }
+
+    public void StartRound() {
+        SetUpNextRound();
+        spawner.onRoundEnd.AddListener(SetUpNextRound);
+        spawner.enabled = true;
     }
 
     public void SetUpNextRound() {
@@ -48,9 +51,12 @@ public class GameManager : MonoBehaviour {
 
     public void LoadNextRound() {
         if (Mathf.Abs(transform.position.x - cameraController.maxX) <= 1) {
+            roundEnded = false;
             spawner.enabled = true;
-            cameraController.maxX += 20;
+            cameraController.maxX += 10;
+            cameraController.minX += 10;
         }
     }
+    
 
 }
