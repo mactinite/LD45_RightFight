@@ -11,6 +11,12 @@ public class HUDController : MonoBehaviour {
 
     private int playerHealth;
 
+    private bool roundStart;
+
+    private int waveCountdown;
+
+    private string indicatorTextString;
+
     private int score = 0;
     private WeaponAsset onGround;
 
@@ -22,6 +28,12 @@ public class HUDController : MonoBehaviour {
 
     public Image swapImage;
     public Image swapPanel;
+
+    public Image FightIndicator;
+    public Image NextWaveIndicator;
+
+    public Text IndicatorText;
+
     void Awake() {
         if (_instance == null) {
             _instance = this;
@@ -86,6 +98,34 @@ public class HUDController : MonoBehaviour {
                 swapPanel.gameObject.SetActive(false);
             }
         }
+    }
+
+    public bool RoundStart {
+        get => roundStart;
+        set {
+            FightIndicator.enabled = value;
+            NextWaveIndicator.enabled = !value;
+            roundStart = value;
+        }
+    }
+    public string IndicatorTextString {
+        get => indicatorTextString;
+        set {
+            if (RoundStart) {
+                IndicatorText.text = value;
+            }
+            indicatorTextString = value;
+        }
+    }
+    public int WaveCountdown {
+        get => waveCountdown;
+        set {
+            if (!RoundStart) {
+                IndicatorText.text = value.ToString();
+            }
+            waveCountdown = value;
+        }
+
     }
 
     public Text comboCountUIText;
