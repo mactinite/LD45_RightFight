@@ -17,9 +17,12 @@ namespace CustomInput {
 
         AnimationController animationController;
 
+        ActorController controller;
+
         void Awake() {
             weaponManager = GetComponent<WeaponManager>();
             animationController = GetComponent<AnimationController>();
+            controller = GetComponent<ActorController>();
         }
 
         // this is super ugly omg
@@ -85,6 +88,10 @@ namespace CustomInput {
                 float dist = Vector3.Distance(target.position, transform.position);
 
                 Collider col = weaponManager.meleeHitbox.checkStatus();
+                // if hit this frame reset reaction
+                if(controller.hit){
+                    reactionTimer = 0;
+                }
 
                 if(col && col.tag == "Enemy"){
                     moveDirection = Vector3.Reflect(moveDirection, animationController.flip ? transform.right : -transform.right);
